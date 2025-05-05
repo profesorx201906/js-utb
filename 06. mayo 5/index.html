@@ -12,6 +12,8 @@
     <p id="variables"></p>
     <h2>Ejercicio Variables</h2>
     <p id="ejerciciovariables"></p>
+    <h2>Comparación variables</h2>
+    <p id="comparacion"></p>
   </body>
   <script>
     //Comentario de una linea
@@ -69,11 +71,25 @@
       let ambito = 10;
       console.log("dentro primera ", ambito);
     }
+
     if (true) {
       let ambito = 5;
       let gamma = 1.25;
       console.log("dentro segunda ", ambito, gamma);
     }
-    console.log("fuera ", ambito,gamma);//error gamma no esta definida en ese ámbito global solo en segunda condicion
+    //console.log("fuera ", ambito,gamma);//error gamma no esta definida en ese ámbito global solo en segunda condicion
+
+    // operadores comparación (relacionales)
+
+    let a = 25;
+    let b = "25"
+    let comparacion = document.getElementById("comparacion");
+    cadena = `a = ${a} y b= '${b}'<br>`;
+    cadena += `tipo de dato a ${typeof a} <br>`;
+    cadena += `tipo de dato b ${typeof b} <br>`;
+    cadena += `compración igual variableresultado a == b resultado ${a==b}<br>`;
+    cadena += `compración extrictamente igual variable a === b resultado ${a===b}`;
+    comparacion.innerHTML=cadena;
+
   </script>
 </html>
