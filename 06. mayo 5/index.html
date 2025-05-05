@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Eventos</h2>
+    <p onclick="alert('Hola mundo')">Presioname</p>
+    <h2>Variables</h2>
+    <p id="variables"></p>
+    <h2>Ejercicio Variables</h2>
+    <p id="ejerciciovariables"></p>
+  </body>
+  <script>
+    //Comentario de una linea
+    /*
+     comentario de 
+     dos
+     o más
+     líneas
+   */
+
+    //Variables
+    let variable = document.getElementById("variables");
+
+    var edad;
+    var nombre;
+    let numeroPersonas;
+    let cadena = "";
+    edad = 50;
+    nombre = "javier";
+    console.log(edad);
+    console.log(nombre);
+
+    const objeto = {
+      nombre: "javier",
+      edad: 48,
+    };
+    objeto.apellido = "Diaz";
+    console.log(objeto);
+    cadena = `variable edad =  ${edad}<br>`;
+    cadena += `variable nombre =  ${nombre}<br>`;
+    cadena += `variable objeto =  ${objeto.nombre} ${objeto.apellido} ${objeto.edad}<br>`;
+    variable.innerHTML = cadena;
+
+    let ejerciciovariables = document.getElementById("ejerciciovariables");
+
+    let fechaNacimiento = "1976";
+    let nombreCompleto = "Javier Diaz Diaz";
+    const annoactual = new Date().getFullYear();
+    const PI = Math.PI;
+    let edadActual = annoactual - parseInt(fechaNacimiento);
+    let longitud = nombreCompleto.length;
+    console.log(edadActual);
+
+    cadena = `Edad ${edadActual} años<br>`;
+    cadena += `longitud ${longitud} caracteres `;
+    console.log(nombreCompleto.toUpperCase());
+    console.log(nombreCompleto.toLowerCase());
+    console.log(nombreCompleto.split(" ")); // divide
+    
+    ejerciciovariables.innerHTML = cadena;
+  </script>
+</html>

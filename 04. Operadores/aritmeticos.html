@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h1>Ejemplo de Operadores Aritméticos en JavaScript</h1>
+  <p id="demo"></p>
+
+  <script>
+    let x = 10;
+    let y = 3;
+    let resultado = "";
+
+    resultado += `x = ${x}, y = ${y} <br>`;
+    resultado += "Suma (x + y): " + (x + y) + "<br>";
+    resultado += "Resta (x - y): " + (x - y) + "<br>";
+    resultado += "Multiplicación (x * y): " + (x * y) + "<br>";
+    resultado += "Exponenciación (x ** y): " + (x ** y) + "<br>";
+    resultado += "División (x / y): " + (x / y) + "<br>";
+    resultado += "Módulo (x % y): " + (x % y) + "<br>";
+
+    // Incremento y decremento
+    let a = 5;
+    let b = 5;
+    resultado += "Valor inicial de a: " + a + "<br>";
+    resultado += "Incremento (++a): " + (++a) + "<br>";
+    resultado += "Valor inicial de b: " + b + "<br>";
+    resultado += "Decremento (--b): " + (--b) + "<br>";
+
+    document.getElementById("demo").innerHTML = resultado;
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h1>Ejemplo de Operadores de Comparación en JavaScript</h1>
+  <p id="demo"></p>
+
+  <script>
+    let resultado = "";
+
+    let a = 5;
+    let b = "5";
+    let c = 8;
+
+    resultado += `a = ${a}, b = "${b}", c = ${c}<br><br>`;
+
+    resultado += "a == b → " + (a == b) + "<br>";     // true (valor igual)
+    resultado += "a === b → " + (a === b) + "<br>";   // false (tipo diferente)
+    resultado += "a != b → " + (a != b) + "<br>";     // false
+    resultado += "a !== b → " + (a !== b) + "<br>";   // true
+
+    resultado += "a > c → " + (a > c) + "<br>";       // false
+    resultado += "a < c → " + (a < c) + "<br>";       // true
+    resultado += "a >= b → " + (a >= b) + "<br>";     // true
+    resultado += "a <= b → " + (a <= b) + "<br>";     // true
+    resultado += "a <= b → " + (5+parseInt('5')) + "<br>";     // true
+
+    // Operador ternario
+    let mensaje = (a === b) ? "Mismo valor y tipo" : "Diferente valor o tipo";
+    resultado += "<br>Operador ternario: " + mensaje;
+
+    document.getElementById("demo").innerHTML = resultado;
+  </script>
+
+</body>
+
+</html>

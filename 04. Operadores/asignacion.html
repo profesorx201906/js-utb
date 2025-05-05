@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h1>Ejemplo de Operadores de Asignación en JavaScript</h1>
+  <p id="demo"></p>
+
+  <script>
+    let resultado = "";
+
+    let x = 10;
+    let y = 2;
+
+    resultado += "Valor inicial: x = " + x + ", y = " + y + "<br>";
+
+    x = y;
+    resultado += "x = y → x = " + x + "<br>";
+
+    x = 10;
+    x += y;
+   
+    resultado += "x += y → x = " + x + "<br>";
+
+    x = 10;
+    x -= y;
+    resultado += "x -= y → x = " + x + "<br>";
+
+    x = 10;
+    x *= y;
+    resultado += "x *= y → x = " + x + "<br>";
+
+    x = 10;
+    x /= y;
+    resultado += "x /= y → x = " + x + "<br>";
+
+    x = 10;
+    x %= y;
+    resultado += "x %= y → x = " + x + "<br>";
+
+    x = 10;
+    x **= y;
+  
+    resultado += "x **= y → x = " + x + "<br>";
+
+    document.getElementById("demo").innerHTML = resultado;
+  </script>
+</body>
+
+</html>

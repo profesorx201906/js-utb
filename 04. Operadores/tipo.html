@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h1>Ejemplo de Operadores typeof e instanceof en JavaScript</h1>
+  <p id="demo"></p>
+
+  <script>
+    let resultado = "";
+
+    // typeof
+    let numero = 42;
+    let texto = "Hola";
+    let esVerdadero = true;
+    let arreglo = [1, 2, 3];
+    let objeto = { nombre: "Juan",edad:5 };
+    let indefinido;
+
+    resultado += "typeof numero → " + typeof numero + "<br>";
+    resultado += "typeof texto → " + typeof texto + "<br>";
+    resultado += "typeof esVerdadero → " + typeof esVerdadero + "<br>";
+    resultado += "typeof arreglo → " + typeof arreglo + "<br>";
+    resultado += "typeof objeto → " + typeof objeto + "<br>";
+    resultado += "typeof indefinido → " + typeof indefinido + "<br><br>";
+
+    // instanceof
+    function Persona(nombre) {
+      this.nombre = nombre;
+    }
+
+    let persona1 = new Persona("Ana");
+
+    resultado += "persona1 instanceof Persona → " + (persona1 instanceof Persona) + "<br>";
+    resultado += "arreglo instanceof Array → " + (arreglo instanceof Array) + "<br>";
+    resultado += "objeto instanceof Object → " + (objeto instanceof Object) + "<br>";
+    resultado += "texto instanceof String → " + (texto instanceof String) + "<br>"; // false (porque texto no es un objeto String)
+
+    document.getElementById("demo").innerHTML = resultado;
+  </script>
+
+</body>
+
+</html>

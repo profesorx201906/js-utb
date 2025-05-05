@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h1>Ejemplo de Operadores Lógicos en JavaScript</h1>
+  <p id="demo"></p>
+
+  <script>
+    let resultado = "";
+
+    let a = true;
+    let b = false;
+
+    resultado += "a = true, b = false<br><br>";
+
+    resultado += "a && b → " + (a && b) + "<br>"; // false
+    resultado += "a || b → " + (a || b) + "<br>"; // true
+    resultado += "!a → " + (!a) + "<br>";         // false
+    resultado += "!b → " + (!b) + "<br>";         // true
+
+    // Combinación lógica
+    resultado += "<br>!(a && b) → " + (!(a && b)) + "<br>"; // true
+
+    document.getElementById("demo").innerHTML = resultado;
+  </script>
+
+</body>
+
+</html>
