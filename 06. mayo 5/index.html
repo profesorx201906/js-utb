@@ -60,7 +60,19 @@
     console.log(nombreCompleto.toUpperCase());
     console.log(nombreCompleto.toLowerCase());
     console.log(nombreCompleto.split(" ")); // divide
-    
+
     ejerciciovariables.innerHTML = cadena;
+
+    // ámbito variable
+    let ambito = 25;
+    if (true) {
+      let ambito = 10;
+      console.log("dentro primera ", ambito);
+    }
+    if (true) {
+      let ambito = 5;
+      console.log("dentro segunda ", ambito);
+    }
+    console.log("fuera ", ambito);
   </script>
 </html>
