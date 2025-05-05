@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Condiciones simples</h3>
+    <h4>Texto</h4>
+    <p id="resultado"></p>
+    <h4>numero</h4>
+    <p id="resultado1"></p>
+    <script>
+      let resultado = document.getElementById("resultado");
+      let impresion;
+      let helados = ["chocolate","cafe","fresa"];
+      let helado = "chocolate";
+      if (helados.includes("chocolate")) {
+        impresion = "Sí es un helado de chocolate";
+      } else {
+        impresion = "No es un helado de chocolate";
+      }
+      resultado.innerHTML = impresion;
+      //numeros
+      let resultado1 = document.getElementById("resultado1");
+      let edad = 18;
+
+      if (edad >= 18) {
+        impresion = "es mayor de edad";
+      } else {
+        impresion = "no es mayor de edad";
+      }
+      resultado1.innerHTML = impresion;
+    </script>
+  </body>
+</html>
