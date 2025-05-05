@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Explorando los Objetos Clave-Valor en JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    textarea, button {
+      width: 100%;
+      max-width: 700px;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+    pre {
+      background-color: #f0f0f0;
+      padding: 10px;
+      white-space: pre-wrap;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 1000px;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Explorando los Objetos Clave-Valor en JavaScript</h1>
+
+  <label for="jsonInput">Ingrese un objeto en formato JSON:</label>
+  <textarea id="jsonInput" rows="8">
+{
+  "nombre": "Juan",
+  "edad": 30,
+  "profesion": "Ingeniero",
+  "activo": true
+}
+  </textarea>
+
+  <button onclick="analizarObjeto()">Analizar Objeto</button>
+
+  <div id="resultados">
+    <h2>Resultados:</h2>
+    <div id="error" class="error"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Operación</th>
+          <th>Resultado</th>
+        </tr>
+      </thead>
+      <tbody id="tablaResultados">
+        <!-- Resultados generados dinámicamente -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function analizarObjeto() {
+      const entrada = document.getElementById("jsonInput").value;
+      const tabla = document.getElementById("tablaResultados");
+      const errorDiv = document.getElementById("error");
+      tabla.innerHTML = "";
+      errorDiv.innerText = "";
+
+      let obj;
+
+      // Intentamos convertir la entrada JSON a un objeto
+      try {
+        obj = JSON.parse(entrada);
+      } catch (error) {
+        errorDiv.innerText = "Error de formato JSON: " + error.message;
+        return;
+      }
+
+      // Mostrar objeto original
+      agregarFila("Objeto original (formateado)", `<pre>${JSON.stringify(obj, null, 2)}</pre>`);
+
+      // Acceso a valores específicos
+      agregarFila("Acceso con notación de punto (.nombre)", obj.nombre || "No disponible");
+      agregarFila("Acceso con notación de corchetes ['edad']", obj["edad"] || "No disponible");
+
+      // Agregar nueva propiedad
+      obj.pais = "Colombia";
+      agregarFila("Agregar propiedad: obj.pais = 'Colombia'", `<pre>${JSON.stringify(obj, null, 2)}</pre>`);
+
+      // Modificar propiedad existente
+      obj.edad = 31;
+      agregarFila("Modificar propiedad: obj.edad = 31", `<pre>${JSON.stringify(obj, null, 2)}</pre>`);
+
+      // Eliminar propiedad
+      delete obj.activo;
+      agregarFila("Eliminar propiedad: delete obj.activo", `<pre>${JSON.stringify(obj, null, 2)}</pre>`);
+
+      // Obtener claves
+      agregarFila("Claves (Object.keys)", JSON.stringify(Object.keys(obj)));
+
+      // Obtener valores
+      agregarFila("Valores (Object.values)", JSON.stringify(Object.values(obj)));
+
+      // Obtener pares clave-valor
+      const entradas = Object.entries(obj);
+      let entradasFormateadas = "";
+      for (let i = 0; i < entradas.length; i++) {
+        entradasFormateadas += entradas[i][0] + ": " + entradas[i][1] + "\n";
+      }
+      agregarFila("Entradas (Object.entries)", `<pre>${entradasFormateadas}</pre>`);
+
+      // Comprobar propiedad con "in"
+      agregarFila("'nombre' in obj", "nombre" in obj);
+
+      // Comprobar propiedad con hasOwnProperty
+      agregarFila("obj.hasOwnProperty('edad')", obj.hasOwnProperty("edad"));
+
+      // Iterar con for...in
+      let resultadoIteracion = "";
+      for (let clave in obj) {
+        resultadoIteracion += `${clave}: ${obj[clave]}\n`;
+      }
+      agregarFila("Iteración con for...in", `<pre>${resultadoIteracion}</pre>`);
+
+      // Función auxiliar para agregar filas a la tabla
+      function agregarFila(titulo, resultado) {
+        tabla.innerHTML += `<tr><td>${titulo}</td><td>${resultado}</td></tr>`;
+      }
+    }
+  </script>
+
+</body>
+</html>

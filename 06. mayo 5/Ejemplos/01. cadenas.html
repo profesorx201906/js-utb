@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Explorando las Propiedades de Cadenas en JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      max-width: 500px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 800px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    #resultados {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Explorando las Propiedades de Cadenas en JavaScript</h1>
+
+  <label for="cadenaInput">Ingrese una cadena de texto:</label>
+  <input type="text" id="cadenaInput" placeholder="Escriba su cadena aquí...">
+
+  <button onclick="analizarCadena()">Analizar Cadena</button>
+
+  <div id="resultados">
+    <h2>Resultados:</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Propiedad</th>
+          <th>Resultado</th>
+        </tr>
+      </thead>
+      <tbody id="tablaResultados">
+
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function analizarCadena() {
+      const cadena = document.getElementById("cadenaInput").value;
+      const tabla = document.getElementById("tablaResultados");
+      tabla.innerHTML = ""; 
+
+      tabla.innerHTML += fila("Longitud (.length)", cadena.length);
+      tabla.innerHTML += fila("Caracter en índice 0 ([]) ", cadena[0] || "N/A");
+      tabla.innerHTML += fila("Caracter en índice 0 (.charAt())", cadena.charAt(0) || "N/A");
+      tabla.innerHTML += fila("Caracter en el último índice", cadena[cadena.length - 1] || "N/A");
+      tabla.innerHTML += fila("Mayúsculas (.toUpperCase())", cadena.toUpperCase());
+      tabla.innerHTML += fila("Minúsculas (.toLowerCase())", cadena.toLowerCase());
+      tabla.innerHTML += fila(".slice(2, 5)", cadena.slice(2, 5));
+      tabla.innerHTML += fila(".slice(3)", cadena.slice(3));
+      tabla.innerHTML += fila(".substring(2, 6)", cadena.substring(2, 6));
+      tabla.innerHTML += fila(".substr(2, 4)", cadena.substr(2, 4));
+      tabla.innerHTML += fila(".indexOf('a')", cadena.indexOf('a'));
+      tabla.innerHTML += fila(".lastIndexOf('a')", cadena.lastIndexOf('a'));
+      tabla.innerHTML += fila(".startsWith('Hola')", cadena.startsWith('Hola'));
+      tabla.innerHTML += fila(".endsWith('mundo')", cadena.endsWith('mundo'));
+      tabla.innerHTML += fila(".includes('texto')", cadena.includes('texto'));
+      tabla.innerHTML += fila(".split(' ')", cadena.split(" ").join(" | "));
+      tabla.innerHTML += fila(".trim()", `"${cadena.trim()}"`);
+    }
+
+    function fila(propiedad, resultado) {
+      return `<tr><td>${propiedad}</td><td>${resultado}</td></tr>`;
+    }
+  </script>
+
+</body>
+</html>
