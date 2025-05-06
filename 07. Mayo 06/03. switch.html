@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Aprendiendo la Sentencia Switch en JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      max-width: 700px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+    select, input, button {
+      padding: 8px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    #resultadoEjemplo, #resultadoEjercicio, #mensajes {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Aprendiendo la Sentencia Switch en JavaScript</h1>
+
+  <!-- Sección de Ejemplo -->
+  <section>
+    <h2>Ejemplo: Actividades según el día de la semana</h2>
+    <label for="diaSemana">Selecciona un día:</label>
+    <select id="diaSemana">
+      <option value="">--Selecciona un día--</option>
+      <option value="Lunes">Lunes</option>
+      <option value="Martes">Martes</option>
+      <option value="Miércoles">Miércoles</option>
+      <option value="Jueves">Jueves</option>
+      <option value="Viernes">Viernes</option>
+      <option value="Sábado">Sábado</option>
+      <option value="Domingo">Domingo</option>
+    </select>
+    <button onclick="sugerirActividad()">Mostrar Actividad</button>
+    <div id="resultadoEjemplo"></div>
+  </section>
+
+  <!-- Sección de Ejercicio -->
+  <section>
+    <h2>Ejercicio: Días del mes</h2>
+    <p>Usa una sentencia <code>switch</code> para determinar cuántos días tiene un mes </p>
+    <label for="mes">Ingresa el nombre del mes:</label>
+    <input type="text" id="mes" placeholder="Ejemplo: abril">
+    <button onclick="evaluarDiasMes()">Evaluar Mes</button>
+    <div id="resultadoEjercicio"></div>
+  </section>
+
+  <!-- Área de mensajes generales -->
+  <div id="mensajes"></div>
+
+  <script>
+    // === EJEMPLO: Actividad sugerida según el día ===
+    function sugerirActividad() {
+      const dia = document.getElementById("diaSemana").value;
+      const resultado = document.getElementById("resultadoEjemplo");
+
+      let actividad = "";
+
+      // Sentencia switch para decidir actividad según el día
+      switch (dia) {
+        case "Lunes":
+          actividad = "Lunes: Empezar la semana con energía.";
+          break;
+        case "Martes":
+          actividad = "Martes: Día para enfocarse en el trabajo.";
+          break;
+        case "Miércoles":
+          actividad = "Miércoles: ¡Mitad de semana!";
+          break;
+        case "Jueves":
+          actividad = "Jueves: Ideal para avanzar proyectos.";
+          break;
+        case "Viernes":
+          actividad = "Viernes: ¡Es casi fin de semana!";
+          break;
+        case "Sábado":
+          actividad = "Sábado: Día perfecto para descansar o salir.";
+          break;
+        case "Domingo":
+          actividad = "Domingo: Relájate y prepárate para la semana.";
+          break;
+        default:
+          actividad = "Por favor, selecciona un día válido.";
+      }
+
+      resultado.textContent = actividad;
+    }
+
+    // === EJERCICIO: Determinar cuántos días tiene un mes ===
+    function evaluarDiasMes() {
+      const mesInput = document.getElementById("mes").value.trim().toLowerCase();
+      const resultado = document.getElementById("resultadoEjercicio");
+
+      let mensaje = "";
+
+      // ==== Codigo ====
+      
+
+      resultado.textContent = mensaje;
+    }
+  </script>
+
+</body>
+</html>

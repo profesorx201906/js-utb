@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Aprendiendo las Condiciones Anidadas en JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      max-width: 700px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+    input, button {
+      padding: 8px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    #resultadoEjemplo, #resultadoEjercicio, #mensajes {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Aprendiendo las Condiciones Anidadas en JavaScript</h1>
+
+  <!-- Sección de Ejemplo -->
+  <section>
+    <h2>Ejemplo: Evaluar un valor numérico</h2>
+    <label for="valor">Ingresa un valor numérico:</label>
+    <input id="valor" placeholder="Ejemplo: 150">
+    <button onclick="evaluarValor()">Evaluar Valor</button>
+    <div id="resultadoEjemplo"></div>
+  </section>
+
+  <!-- Sección de Ejercicio -->
+  <section>
+    <h2>Ejercicio: Determinar etapa de la vida</h2>
+    <p>Escribe código que determine si una persona es bebé (0-2), niño (3-12), adolescente (13-17), adulto (18-59) o adulto mayor (60+).</p>
+    <label for="edad">Ingresa una edad:</label>
+    <input id="edad" placeholder="Ejemplo: 25">
+    <button onclick="evaluarEtapa()">Evaluar Edad</button>
+    <div id="resultadoEjercicio"></div>
+  </section>
+
+  <!-- Área de mensajes generales -->
+  <div id="mensajes"></div>
+
+  <script>
+    // === EJEMPLO ===
+    function evaluarValor() {
+      const valor = parseFloat(document.getElementById("valor").value);
+      const resultado = document.getElementById("resultadoEjemplo");
+
+      if (isNaN(valor)) {
+        resultado.textContent = "Por favor ingresa un número válido.";
+        return;
+      }
+
+      // Condiciones anidadas
+      if (valor <= 100) {
+        resultado.textContent = "Valor bajo o igual a 100";
+      } else {
+        if (valor <= 300) {
+          resultado.textContent = "Valor medio (mayor que 100 y menor o igual a 300)";
+        } else {
+          if (valor <= 400) {
+            resultado.textContent = "Valor alto (mayor que 300 y menor o igual a 400)";
+          } else {
+            resultado.textContent = "Valor máximo (mayor que 400)";
+          }
+        }
+      }
+    }
+
+    // === EJERCICIO: Condiciones anidadas para etapa de vida ===
+    function evaluarEtapa() {
+      const edad = parseInt(document.getElementById("edad").value);
+      const resultado = document.getElementById("resultadoEjercicio");
+
+      if (isNaN(edad) || edad < 0) {
+        resultado.textContent = "Por favor ingresa una edad válida (0 o mayor).";
+        return;
+      }
+
+      // ==== codigo ==== 
+
+      
+
+    }
+  </script>
+
+</body>
+</html>
