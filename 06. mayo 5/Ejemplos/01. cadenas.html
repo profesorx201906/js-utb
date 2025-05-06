@@ -64,6 +64,7 @@
 
       tabla.innerHTML += fila("Longitud (.length)", cadena.length);
       tabla.innerHTML += fila("Caracter en índice 0 ([]) ", cadena[0] || "N/A");
+      tabla.innerHTML += fila("Caracter en índice 25 ([]) ", cadena[cadena.length-1] || "N/A");
       tabla.innerHTML += fila("Caracter en índice 0 (.charAt())", cadena.charAt(0) || "N/A");
       tabla.innerHTML += fila("Caracter en el último índice", cadena[cadena.length - 1] || "N/A");
       tabla.innerHTML += fila("Mayúsculas (.toUpperCase())", cadena.toUpperCase());
@@ -71,14 +72,18 @@
       tabla.innerHTML += fila(".slice(2, 5)", cadena.slice(2, 5));
       tabla.innerHTML += fila(".slice(3)", cadena.slice(3));
       tabla.innerHTML += fila(".substring(2, 6)", cadena.substring(2, 6));
-      tabla.innerHTML += fila(".substr(2, 4)", cadena.substr(2, 4));
+      tabla.innerHTML += fila(".substr(11, 3)", cadena.substr(11, 3));
       tabla.innerHTML += fila(".indexOf('a')", cadena.indexOf('a'));
       tabla.innerHTML += fila(".lastIndexOf('a')", cadena.lastIndexOf('a'));
       tabla.innerHTML += fila(".startsWith('Hola')", cadena.startsWith('Hola'));
       tabla.innerHTML += fila(".endsWith('mundo')", cadena.endsWith('mundo'));
       tabla.innerHTML += fila(".includes('texto')", cadena.includes('texto'));
+      let cadenasplit=cadena.toUpperCase().split("LAS");
+      console.log(cadenasplit);
+      
       tabla.innerHTML += fila(".split(' ')", cadena.split(" ").join(" | "));
       tabla.innerHTML += fila(".trim()", `"${cadena.trim()}"`);
+      
     }
 
     function fila(propiedad, resultado) {

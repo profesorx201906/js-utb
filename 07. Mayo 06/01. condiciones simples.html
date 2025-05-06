@@ -1,101 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Aprendiendo las Condiciones en JavaScript</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      max-width: 700px;
-    }
-    h1, h2 {
-      color: #333;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 5px;
-    }
-    input, button {
-      padding: 8px;
-      font-size: 16px;
-      margin-bottom: 10px;
-      width: 100%;
-    }
-    #resultadoEjemplo, #resultadoEjercicio, #mensajes {
-      margin-top: 10px;
-      padding: 10px;
-      background-color: #f0f0f0;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Aprendiendo las Condiciones en JavaScript</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        max-width: 700px;
+      }
+      h1,
+      h2 {
+        color: #333;
+      }
+      label {
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 5px;
+      }
+      input,
+      button {
+        padding: 8px;
+        font-size: 16px;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+      #resultadoEjemplo,
+      #resultadoEjercicio,
+      #mensajes {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Aprendiendo las Condiciones en JavaScript</h1>
 
-  <h1>Aprendiendo las Condiciones en JavaScript</h1>
+    <!-- Sección de Ejemplo -->
+    <section>
+      <h2>Ejemplo: Evaluar si un número es positivo, negativo o cero</h2>
+      <label for="numero">Ingresa un número:</label>
+      <input id="numero" placeholder="Ejemplo: -5, 0, 42" />
+      <button onclick="evaluarNumero()">Evaluar Número</button>
+      <div id="resultadoEjemplo"></div>
+    </section>
 
-  <!-- Sección de Ejemplo -->
-  <section>
-    <h2>Ejemplo: Evaluar si un número es positivo, negativo o cero</h2>
-    <label for="numero">Ingresa un número:</label>
-    <input id="numero" placeholder="Ejemplo: -5, 0, 42">
-    <button onclick="evaluarNumero()">Evaluar Número</button>
-    <div id="resultadoEjemplo"></div>
-  </section>
+    <!-- Sección de Ejercicio -->
+    <section>
+      <h2>Ejercicio: ¿El año es bisiesto?</h2>
+      <p>
+        Escribe tu código para determinar si un año ingresado es bisiesto o no.
+      </p>
+      <label for="anio">Ingresa un año:</label>
+      <input id="anio" placeholder="Ejemplo: 2024" />
+      <button onclick="evaluarBisiesto()">Evaluar Año</button>
+      <div id="resultadoEjercicio"></div>
+    </section>
 
-  <!-- Sección de Ejercicio -->
-  <section>
-    <h2>Ejercicio: ¿El año es bisiesto?</h2>
-    <p>Escribe tu código para determinar si un año ingresado es bisiesto o no.</p>
-    <label for="anio">Ingresa un año:</label>
-    <input id="anio" placeholder="Ejemplo: 2024">
-    <button onclick="evaluarBisiesto()">Evaluar Año</button>
-    <div id="resultadoEjercicio"></div>
-  </section>
+    <!-- Mensajes generales -->
+    <div id="mensajes"></div>
 
-  <!-- Mensajes generales -->
-  <div id="mensajes"></div>
+    <script>
+      // === EJEMPLO ===
+      function evaluarNumero() {
+        const numero = parseFloat(document.getElementById("numero").value);
+        const resultadoDiv = document.getElementById("resultadoEjemplo");
 
-  <script>
-    // === EJEMPLO ===
-    function evaluarNumero() {
-      const numero = parseFloat(document.getElementById("numero").value);
-      const resultadoDiv = document.getElementById("resultadoEjemplo");
+        // Validación de entrada
+        if (isNaN(numero)) {
+          resultadoDiv.textContent = "Por favor ingresa un número válido.";
+          return;
+        }
 
-      // Validación de entrada
-      if (isNaN(numero)) {
-        resultadoDiv.textContent = "Por favor ingresa un número válido.";
-        return;
+        // Estructura condicional para evaluar el número
+        if (numero > 0) {
+          resultadoDiv.textContent = "El número ingresado es positivo.";
+        } else if (numero < 0) {
+          resultadoDiv.textContent = "El número ingresado es negativo.";
+        } else {
+          resultadoDiv.textContent = "El número ingresado es cero.";
+        }
       }
 
-      // Estructura condicional para evaluar el número
-      if (numero > 0) {
-        resultadoDiv.textContent = "El número ingresado es positivo.";
-      } else if (numero < 0) {
-        resultadoDiv.textContent = "El número ingresado es negativo.";
-      } else {
-        resultadoDiv.textContent = "El número ingresado es cero.";
+      // === EJERCICIO ===
+      function evaluarBisiesto() {
+        const anio = parseInt(document.getElementById("anio").value);
+        const resultadoDiv = document.getElementById("resultadoEjercicio");
+
+        // Validación de entrada
+        if (isNaN(anio) || anio <= 0) {
+          resultadoDiv.textContent =
+            "Por favor ingresa un año válido (mayor que 0).";
+          return;
+        }
+
+        // Lógica para determinar si el año es bisiesto
+        // Un año es bisiesto si:
+        // - Es divisible por 4
+        // - No es divisible por 100, a menos que también sea divisible por 400
+        if (anio % 4 === 0 && (anio % 100 !== 0 || anio % 400 === 0)) {
+          resultadoDiv.textContent = "es bisiesto";
+        } else {
+          resultadoDiv.textContent = "No es bisiesto";
+        }
       }
-    }
-
-    // === EJERCICIO ===
-    function evaluarBisiesto() {
-      const anio = parseInt(document.getElementById("anio").value);
-      const resultadoDiv = document.getElementById("resultadoEjercicio");
-
-      // Validación de entrada
-      if (isNaN(anio) || anio <= 0) {
-        resultadoDiv.textContent = "Por favor ingresa un año válido (mayor que 0).";
-        return;
-      }
-
-      // Lógica para determinar si el año es bisiesto
-      // Un año es bisiesto si:
-      // - Es divisible por 4
-      // - No es divisible por 100, a menos que también sea divisible por 400
-    }
-  </script>
-
-</body>
+    </script>
+  </body>
 </html>
