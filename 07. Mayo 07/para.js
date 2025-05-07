@@ -62,7 +62,7 @@ console.log(cadenaInvertida);
 //-----------------------
 
 //modificar para imprimir la cadena e imprimir el carater # en lugar de las vocales
-
+/*
 let cadena = "hola campistas bienvenidos";
 let cadenaInvertida = ""
 for (let i = cadena.length - 1; i >= 0; i--) {
@@ -76,7 +76,8 @@ for (let i = cadena.length - 1; i >= 0; i--) {
   }
 }
 console.log(cadenaInvertida);
-
+*/
+//-----------------------
 /*
 let cadena = "hola campistas bienvendios";
 let resultado = "";
