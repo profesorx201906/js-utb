@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bienvenida en JavaScript</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 300px;
+      }
+
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .resultado {
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Bienvenida</h2>
+      <input type="text" id="nombre" placeholder="Nombre completo" />
+      <input type="number" id="edad" placeholder="Edad en años" />
+      <button onclick="mostrarBienvenida()">Enviar</button>
+      <div class="resultado" id="resultado"></div>
+    </div>
+
+    <script>
+      function mostrarBienvenida() {
+        const nombre = document.getElementById("nombre").value;
+        const edad = document.getElementById("edad").value;
+      }
+    </script>
+  </body>
+</html>

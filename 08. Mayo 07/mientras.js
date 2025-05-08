@@ -20,7 +20,7 @@ while (cadena[i] !== ",") {
 */
 
 // ---- Ejemplo do while
-
+/*
 let n = 0;
 console.log("Inicio Ciclo while");
 while (n !== 0) {
@@ -35,4 +35,9 @@ do {
 } while (n !== 0);
 console.log("Fin Ciclo do while");
 
-
+*/
+let n=0;
+do {
+  console.log(n);
+  n++;
+} while (n<5);
