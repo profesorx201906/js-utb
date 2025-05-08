@@ -1,79 +1,98 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verificar Palíndromo</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #e8f0fe;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .container {
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      width: 300px;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 0.5rem;
-      margin: 1rem 0;
-      border: 1px solid #ccc;
-      border-radius: 0.5rem;
-    }
-
-    button {
-      background-color: #28a745;
-      color: white;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    button:hover {
-      background-color: #218838;
-    }
-
-    .resultado {
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h2>Verificador de Palíndromos</h2>
-    <input type="text" id="palabra" placeholder="Ingresa una palabra">
-    <button onclick="verificarPalindromo()">Verificar</button>
-    <div class="resultado" id="resultado"></div>
-  </div>
-
-  <script>
-    function verificarPalindromo() {
-      const palabra = document.getElementById("palabra").value;
-      const invertida = palabra.split("").reverse().join("");
-
-      let mensaje;
-      if (palabra === invertida) {
-        mensaje = "La palabra es un palíndromo.";
-      } else {
-        mensaje = "La palabra no es un palíndromo.";
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verificar Palíndromo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #e8f0fe;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
       }
 
-      document.getElementById("resultado").textContent = mensaje;
-    }
-  </script>
-</body>
+      .container {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 300px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 0.5rem;
+        margin: 1rem 0;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+      }
+
+      button {
+        background-color: #28a745;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      button:hover {
+        background-color: #218838;
+      }
+
+      .resultado {
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Verificador de Palíndromos</h2>
+      <input type="text" id="palabra" placeholder="Ingresa una palabra" />
+      <button onclick="verificarPalindromo()">Verificar</button>
+      <div class="resultado" id="resultado"></div>
+    </div>
+
+    <script>
+      function verificarPalindromo() {
+        const palabra = document.getElementById("palabra").value;
+        let invertida = "";
+
+        //quitar los espacios en blanco de la palabra
+        let palabraSinEspacios = "";
+
+        for (const letra of palabra) {
+          if (letra !== " ") {
+            palabraSinEspacios += letra;
+          }
+        }
+
+        //crear la palabra invertida
+
+        for (let i = palabraSinEspacios.length - 1; i >= 0; i--) {
+          if (palabraSinEspacios[i] !== " ") {
+            invertida += palabraSinEspacios[i];
+          }
+        }
+
+        //comprobar si son iguales
+
+        let mensaje;
+        if (palabraSinEspacios.toLocaleLowerCase() === invertida.toLocaleLowerCase()) {
+          mensaje = "La palabra es un palíndromo.";
+        } else {
+          mensaje = "La palabra no es un palíndromo.";
+        }
+
+        document.getElementById("resultado").textContent = `${mensaje}`;
+      }
+    </script>
+  </body>
 </html>
