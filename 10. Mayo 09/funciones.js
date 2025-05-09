@@ -87,3 +87,16 @@ let frutas = ["manzana","pera","banana"];
 let numeros = [5,6,9,3];
 imprimirArreglo(frutas);
 imprimirArregloV2(numeros);
+
+// elemento arguments[] (arreglo)
+
+function paises(){
+  let resultado="";
+  for (let index = 0; index < arguments.length; index++) {
+    resultado += arguments[index]+"-";
+    
+  }
+  return resultado;
+
+}
+console.log(paises('colombia','argentina','ecuador'));
