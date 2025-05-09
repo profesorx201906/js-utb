@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Filtrar Usuarios Activos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f9f9f9;
+    }
+    .contenedor {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label, textarea, button {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+    }
+    textarea {
+      padding: 8px;
+      box-sizing: border-box;
+      resize: vertical;
+      height: 100px;
+    }
+    button {
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h2>Obtener Usuarios Activos</h2>
+    <label for="usuarios">Ingresa usuarios en formato JSON:<br>
+      Ejemplo: [{"nombre":"Laura","activo":true},{"nombre":"Marco","activo":false}]
+    </label>
+    <textarea id="usuarios" placeholder='[{"nombre":"Ana","activo":true},{"nombre":"Luis","activo":false}]'></textarea>
+
+    <button onclick="filtrarUsuariosActivos()">Mostrar Activos</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    // Crea una función llamada obtenerUsuariosActivos que reciba un arreglo de objetos usuario.
+    // Cada objeto tiene: { nombre: string, activo: boolean }
+    // La función debe devolver un arreglo con solo los nombres de los usuarios activos. 
+    function filtrarUsuariosActivos() {
+         }
+  </script>
+</body>
+</html>

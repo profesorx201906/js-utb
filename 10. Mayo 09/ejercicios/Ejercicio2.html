@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Filtrar Números Pares</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f0f4f8;
+    }
+    .contenedor {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label, input, button {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+    }
+    input {
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px;
+      margin-top: 15px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h2>Filtrar Números Pares</h2>
+    <label for="numeros">Ingresa números separados por comas:</label>
+    <input type="text" id="numeros" placeholder="Ejemplo: 1,2,3,4,5,6">
+
+    <button onclick="filtrarPares()">Mostrar Pares</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    // Crea una función llamada obtenerPares que reciba un arreglo de números
+    // y devuelva un nuevo arreglo solo con los números pares.
+    function filtrarPares() {
+         }
+  </script>
+</body>
+</html>
