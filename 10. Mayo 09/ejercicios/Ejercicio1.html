@@ -1,60 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Calculadora de Descuento</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 30px;
-      background-color: #f7f7f7;
-    }
-    .contenedor {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    label {
-      display: block;
-      margin-top: 10px;
-    }
-    input, button {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      box-sizing: border-box;
-    }
-    #resultado {
-      margin-top: 20px;
-      font-weight: bold;
-      color: green;
-    }
-  </style>
-</head>
-<body>
-  <div class="contenedor">
-    <h2>Calculadora de Descuento</h2>
-    <label for="precio">Precio original:</label>
-    <input type="number" id="precio" placeholder="Ej: 100">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculadora de Descuento</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 30px;
+        background-color: #f7f7f7;
+      }
+      .contenedor {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 400px;
+        margin: auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input,
+      button {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        box-sizing: border-box;
+      }
+      #resultado {
+        margin-top: 20px;
+        font-weight: bold;
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contenedor">
+      <h2>Calculadora de Descuento</h2>
+      <label for="precio">Precio original:</label>
+      <input id="precio" placeholder="Ej: 100" />
 
-    <label for="descuento">Porcentaje de descuento (%):</label>
-    <input type="number" id="descuento" placeholder="Ej: 15">
+      <label for="descuento">Porcentaje de descuento (%):</label>
+      <input id="descuento" placeholder="Ej: 15" />
 
-    <button onclick="calcularDescuento()">Calcular</button>
+      <button onclick="calcularDescuento()">Calcular</button>
 
-    <div id="resultado"></div>
-  </div>
+      <div id="resultado"></div>
+    </div>
 
-  <script>
-    // Crea una función llamada calcularDescuento que reciba el precio original de un producto
-    // y un porcentaje de descuento (ambos números).
-    // Debe devolver el precio final con descuento aplicado, redondeado a 2 decimales.
-    function calcularDescuento() {
-      
-    }
-  </script>
-</body>
+    <script>
+      // Crea una función llamada calcularDescuento que reciba el precio original de un producto
+      // y un porcentaje de descuento (ambos números).
+      // Debe devolver el precio final con descuento aplicado, redondeado a 2 decimales.
+
+      //pasos
+      //traer los valores de las cajas de texto (getElementById)
+      //hallar el descuento
+      //enviar al objeto resultado el valor
+      let resultado = document.getElementById("resultado");
+
+      function calcularDescuento() {
+        let precio = document.getElementById("precio").value;
+        if (isNaN(precio)) {
+          resultado.innerHTML = "Digite un valo correcto para precio";
+          return;
+        }
+        let descuento = document.getElementById("descuento").value;
+        if (isNaN(descuento)) {
+          resultado.innerHTML = "Digite un valo correcto para el descuento";
+          return;
+        }
+        let calculo = (precio - (precio * descuento) / 100).toFixed(2);
+        resultado.innerHTML = calculo;
+      }
+    </script>
+  </body>
 </html>
