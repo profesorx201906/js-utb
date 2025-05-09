@@ -40,3 +40,11 @@ console.log(estratos);
 estratos.forEach(function(estrato, indice){
   console.log(estrato + " " + indice + " desde forEach");  
 })
+
+
+// ejemplo copiar arreglo
+
+let paises = ["Colombia","Ecuador","Panama","Perú","Argentina","USA"];
+console.log(paises);
+let paisesConIdiomaEspañol=paises.slice(1,3);
+console.log(paisesConIdiomaEspañol);
