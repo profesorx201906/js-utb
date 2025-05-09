@@ -1,10 +1,14 @@
 console.log("Antes de crear la funcion");
 
 //función -> retorna valor
-function sumar(a, b) {
+/*function sumar(a, b) {
   return a + b;//tiene metodo return
-}
+}*/
 
+//cambiar la funcion sumar por una funcion flecha
+const sumar = (a, b) => {
+  return a + b;
+}
 console.log(sumar(5, 6));
 let suma = sumar(10, 20);
 console.log(suma);
@@ -65,3 +69,21 @@ const numeroMayorV2 = (num1, num2, num3) => {
   return mayor;
 }
 console.log(numeroMayorV2(100, 50, 14));
+
+
+//ejemplo de parametro o argumento tipo array
+
+const imprimirArreglo = (array) => {
+  for (const element of array) {
+    console.log(element);
+  }
+}
+function imprimirArregloV2(array) {
+  for (const element of array) {
+    console.log(element);
+  }
+}
+let frutas = ["manzana","pera","banana"];
+let numeros = [5,6,9,3];
+imprimirArreglo(frutas);
+imprimirArregloV2(numeros);
