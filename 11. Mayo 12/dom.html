@@ -7,32 +7,38 @@
   </head>
 
   <body>
-    <div id="Contenido"></div>
-  </body>
-  <script>
-    let contenido=document.getElementById("Contenido");
-    contenido.innerHTML=`<table border="1">
+    <table border="1">
       <thead>
-        <tr id="encabezado">
-          <td id="ejemplo">encabezado 1</td>
-          <td>encabezado 2</td>
+        <tr id="ejemplo">
+          <td class="columna">encabezado 1</td>
+          <td class="columna">encabezado 2</td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>hola</td>
-          <td>mundo</td>
+          <td class="columna">hola</td>
+          <td class="columna">mundo</td>
         </tr>
       </tbody>
       <tfoot>
-        <tr>
+        <tr class="columna">
           <td>Pie1</td>
           <td>Pie2</td>
         </tr>
       </tfoot>
-    </table>`
-    let encabezado = document.getElementById("encabezado");
-    encabezado.style.backgroundColor="#bbbb00";
-    //console.log(document.getElementById("ejemplo").innerText);
+    </table>
+    <p id="resultado"></p>
+  </body>
+  <script>
+    let encabezado = document.getElementById("ejemplo");
+    let resultado = document.getElementById("resultado");
+    console.log(encabezado);
+    console.log("<--ejemplo getElementsByClassName-->");
+    
+    // traer el elemento con el mentodo getElementsByClassName
+    let columnas = document.getElementsByClassName("columna");
+    for (const columna of columnas) {
+      console.log(columna.innerHTML);
+    }
   </script>
 </html>
