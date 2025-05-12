@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="Contenido"></div>
+  </body>
+  <script>
+    let contenido=document.getElementById("Contenido");
+    contenido.innerHTML=`<table border="1">
+      <thead>
+        <tr id="encabezado">
+          <td id="ejemplo">encabezado 1</td>
+          <td>encabezado 2</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>hola</td>
+          <td>mundo</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Pie1</td>
+          <td>Pie2</td>
+        </tr>
+      </tfoot>
+    </table>`
+    let encabezado = document.getElementById("encabezado");
+    encabezado.style.backgroundColor="#bbbb00";
+    //console.log(document.getElementById("ejemplo").innerText);
+  </script>
+</html>
