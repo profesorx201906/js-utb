@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mi Página Web</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #eef2f3;
+      }
+
+      header {
+        background-color: #2c3e50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+
+      nav {
+        background-color: #34495e;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 10px;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      nav a:hover {
+        text-decoration: underline;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .card {
+        background-color: white;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        background-color: #3498db;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: #2980b9;
+      }
+
+      footer {
+        background-color: #2c3e50;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        position: relative;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Bienvenido a mi sitio web</h1>
+      <p>Una página sencilla con diseño estilizado</p>
+    </header>
+
+    <nav>
+      <a href="inicio.html">Inicio</a>
+      <a href="servicio.html">Servicios</a>
+      <a href="contacto.html ">Contacto</a>
+    </nav>
+
+    <main>
+      <section class="card">
+        <h2>Acerca de nosotros</h2>
+        <p>Somos una empresa dedicada al desarrollo web moderno y accesible.</p>
+      </section>
+
+      <section class="card">
+        <h2>Formulario de contacto</h2>
+
+        <label for="nombre">Nombre:</label><br />
+        <input type="text" id="nombre" name="nombre" /><br /><br />
+
+        <label for="Nombre Copiado">Nombre copiado</label><br />
+        <input
+          type="text"
+          id="nombreCopiado"
+          name="nombrecopiado"
+        /><br /><br />
+
+        <button onclick="copiarNombre()" class="btn">Enviar</button>
+      </section>
+    </main>
+
+    <footer>&copy; 2025 Mi Empresa. Todos los derechos reservados.</footer>
+  </body>
+  <script>
+    //listar todos los enlaces de la página.
+    console.log("utilizando el getElementsByTagName");
+
+    let enlaces = document.getElementsByTagName("a");
+    console.log("arreglo");
+    console.log(enlaces);
+    console.log("título enlaces");
+    for (const enlace of enlaces) {
+      console.log(enlace.innerHTML);
+    }
+    console.log("enlaces URL");
+    for (const enlace of enlaces) {
+      console.log(enlace.href);
+    }
+
+    //listar todos los elementos que tiene el estilo card.
+    console.log("utilizando el getElementsByClassName");
+    //let cards = document.getElementsByClassName("card");
+    let cards =document.querySelectorAll(".card")
+    console.log(cards);
+
+    for (const card of cards) {
+      console.log(card.innerHTML);
+    }
+
+    console.log(
+      "traer datos desde caja de texto y enviar a otra caja de texto"
+    );
+    //let nombre = document.getElementById("nombre");
+    //ejemplo queryselector
+    let nombre = document.querySelector("#nombre");
+    let nombreCopiado = document.getElementById("nombreCopiado");
+
+    function copiarNombre() {
+      nombreCopiado.value = nombre.value;
+    }
+  </script>
+</html>
