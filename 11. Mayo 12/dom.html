@@ -27,7 +27,31 @@
         </tr>
       </tfoot>
     </table>
+    <input type="radio" name="estadocivil" value="separado">separado</input>
+    <input type="radio" name="estadocivil" value="casado">casado</input>
+    <input type="radio" name="estadocivil" value="soltero">soltero</input>
+    <input type="radio" name="estadocivil" value="union libre">union libre</input>
     <p id="resultado"></p>
+     <table border="1">
+      <thead>
+        <tr id="ejemplo1">
+          <td class="columna">encabezado 1</td>
+          <td class="columna">encabezado 2</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="columna">hola</td>
+          <td class="columna">mundo</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="columna">
+          <td>Pie1</td>
+          <td>Pie2</td>
+        </tr>
+      </tfoot>
+    </table>
   </body>
   <script>
     let encabezado = document.getElementById("ejemplo");
@@ -39,6 +63,18 @@
     let columnas = document.getElementsByClassName("columna");
     for (const columna of columnas) {
       console.log(columna.innerHTML);
+    }
+    console.log("<--ejemplo getElementsByName-->");
+    // traer el elemento con el mentodo getElementsByName
+    let opciones = document.getElementsByName("estadocivil");
+    for (const opcion of opciones) {
+      console.log(opcion.value);
+    }
+    console.log("<--ejemplo getElementsByTagName-->");
+        // traer el elemento con el mentodo getElementsByTagName
+    let tags = document.getElementsByTagName("td");
+    for (const tag of tags) {
+      console.log(tag.innerHTML);
     }
   </script>
 </html>
