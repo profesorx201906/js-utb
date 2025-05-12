@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="uno">Texto párrafo uno</p>
+  <p id="dos">XXXXXXx</p>
+  <button onclick="myFuncion()">Presioname</button>
+  <script>
+    function myFuncion() {
+      let parrafoUno = document.getElementById("uno");
+      let parrafoDos = document.getElementById("dos");
+      parrafoDos.innerHTML=parrafoUno.innerHTML
+    }
+  </script>
+</body>
+</html>
