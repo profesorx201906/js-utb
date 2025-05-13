@@ -90,12 +90,14 @@
   </section>
 
   <script>
+    let i=0;
     function crearElemento() {
       const div = document.createElement('div');
-      div.textContent = 'Elemento creado con createElement';
+      div.textContent = 'Elemento creado con createElement ' +i;
       div.style.padding = '5px';
       div.style.border = '1px solid #00796b';
       document.getElementById('output-createElement').appendChild(div);
+      i++;
     }
 
     function crearComentario() {
