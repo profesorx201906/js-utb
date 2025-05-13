@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Navegar Nodos DOM</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fff8e1;
+      padding: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      margin: 10px 0;
+      background-color: white;
+    }
+    td {
+      border: 2px solid #ffcc80;
+      padding: 10px;
+      text-align: center;
+    }
+    button {
+      padding: 8px 14px;
+      background-color: #fb8c00;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ef6c00;
+    }
+    .output {
+      margin-top: 15px;
+      background-color: #fff3e0;
+      border: 1px dashed #ffa726;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Navegación DOM: Padres e Hijos</h1>
+
+<p>Usamos el nodo <strong>Nivel 2</strong> como punto de partida.</p>
+<button onclick="explorarDesdeNivel2()">Explorar</button>
+
+<!-- Tabla anidada con 4 niveles -->
+<table>
+  <tr>
+    <td>Nivel 1
+      <table>
+        <tr>
+          <td id="nivel2">Nivel 2
+            <table>
+              <tr>
+                <td>Nivel 3
+                  <table>
+                    <tr>
+                      <td id="nivel4">Nivel 4</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<div class="output" id="salidaExplorar"></div>
+
+<script>
+  function explorarDesdeNivel2() {
+    const salida = document.getElementById('salidaExplorar');
+    const nodoNivel2 = document.getElementById('nivel2');
+
+    // Hijo directo
+    const hijo1 = nodoNivel2.querySelector('table'); 
+    const hijo1Texto = hijo1?.parentElement?.textContent.trim().split('\n')[0] || "Sin hijo directo";
+
+    // Nieto (2 niveles hacia abajo)
+    const hijo2 = hijo1?.querySelector('table'); 
+    const hijo2Texto = hijo2?.parentElement?.textContent.trim().split('\n')[0] || "Sin nieto";
+
+    // Padre directo
+    const padre1 = nodoNivel2.parentElement?.parentElement?.parentElement; 
+    const padre1Texto = padre1?.textContent.trim().split('\n')[0] || "Sin padre";
+
+    // Abuelo (2 niveles hacia arriba)
+    const padre2 = padre1?.parentElement?.parentElement?.parentElement; 
+    const padre2Texto = padre2?.textContent.trim().split('\n')[0] || "Sin abuelo";
+
+    salida.innerHTML = `
+      <strong>Nodo actual:</strong> Nivel 2<br><br>
+      <strong>➡ Hijo directo:</strong> ${hijo1Texto}<br>
+      <strong>➡ Nieto:</strong> ${hijo2Texto}<br><br>
+      <strong>⬅ Padre directo:</strong> ${padre1Texto}<br>
+      <strong>⬅ Abuelo:</strong> ${padre2Texto}
+    `;
+  }
+</script>
+
+</body>
+</html>

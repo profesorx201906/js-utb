@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Insertar Elementos DOM</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e1f5fe;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #01579b;
+    }
+
+    section {
+      background: #ffffff;
+      border: 2px solid #90caf9;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #0288d1;
+      color: white;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #01579b;
+    }
+
+    .output {
+      border: 1px dashed #999;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #f5f5f5;
+    }
+
+    .caja {
+      border: 1px solid #0288d1;
+      padding: 8px;
+      margin: 5px;
+      background-color: #e0f7fa;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Insertar Elementos en el DOM</h1>
+
+<!-- appendChild -->
+<section>
+  <h2>1. appendChild(node)</h2>
+  <p>Añade un nodo como hijo del nodo actual.</p>
+  <button onclick="usarAppendChild()">Agregar hijo</button>
+  <div class="output" id="output-appendChild"></div>
+</section>
+
+<!-- insertAdjacentElement -->
+<section>
+  <h2>2. insertAdjacentElement(pos, elem)</h2>
+  <p>Inserta un elemento en una posición relativa al nodo.</p>
+  <button onclick="usarInsertAdjacentElement()">Insertar elemento</button>
+  <div class="output" id="output-insertAdjacentElement">
+    <div id="elementoReferencia1" class="caja">Elemento de referencia</div>
+  </div>
+</section>
+
+<!-- insertAdjacentHTML -->
+<section>
+  <h2>3. insertAdjacentHTML(pos, str)</h2>
+  <p>Inserta HTML directamente en la posición indicada.</p>
+  <button onclick="usarInsertAdjacentHTML()">Insertar HTML</button>
+  <div class="output" id="output-insertAdjacentHTML">
+    <div id="elementoReferencia2" class="caja">Elemento de referencia</div>
+  </div>
+</section>
+
+<!-- insertAdjacentText -->
+<section>
+  <h2>4. insertAdjacentText(pos, text)</h2>
+  <p>Inserta texto plano en una posición específica.</p>
+  <button onclick="usarInsertAdjacentText()">Insertar texto</button>
+  <div class="output" id="output-insertAdjacentText">
+    <div id="elementoReferencia3" class="caja">Elemento de referencia</div>
+  </div>
+</section>
+
+<!-- insertBefore -->
+<section>
+  <h2>5. insertBefore(newNode, referenceNode)</h2>
+  <p>Inserta un nodo antes de otro como hijo del contenedor.</p>
+  <button onclick="usarInsertBefore()">Insertar antes</button>
+  <div class="output" id="output-insertBefore">
+    <div id="contenedor">
+      <div id="nodoReferencia" class="caja">Nodo referencia</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function usarAppendChild() {
+    const contenedor = document.getElementById("output-appendChild");
+    const nuevo = document.createElement("div");
+    nuevo.textContent = "Nuevo hijo";
+    nuevo.className = "caja";
+    contenedor.appendChild(nuevo);
+  }
+
+  function usarInsertAdjacentElement() {
+    const ref = document.getElementById("elementoReferencia1");
+    const nuevo = document.createElement("div");
+    nuevo.textContent = "Elemento insertado con insertAdjacentElement (afterend)";
+    nuevo.className = "caja";
+    ref.insertAdjacentElement("afterend", nuevo);
+  }
+
+  function usarInsertAdjacentHTML() {
+    const ref = document.getElementById("elementoReferencia2");
+    ref.insertAdjacentHTML("beforebegin", '<div class="caja">HTML insertado con insertAdjacentHTML (beforebegin)</div>');
+  }
+
+  function usarInsertAdjacentText() {
+    const ref = document.getElementById("elementoReferencia3");
+    ref.insertAdjacentText("afterend", " ← Texto agregado con insertAdjacentText");
+  }
+
+  function usarInsertBefore() {
+    const contenedor = document.getElementById("contenedor");
+    const ref = document.getElementById("nodoReferencia");
+    const nuevo = document.createElement("div");
+    nuevo.textContent = "Nodo insertado con insertBefore";
+    nuevo.className = "caja";
+    contenedor.insertBefore(nuevo, ref);
+  }
+</script>
+
+</body>
+</html>

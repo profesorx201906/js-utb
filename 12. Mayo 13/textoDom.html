@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>Hola Mundo</div>
+    <table id="saludar">
+      <tr id="textoOriginal">
+        <td>
+          <strong>Mensaje original<br /></strong>
+        </td>
+      </tr>
+    </table>
+    <h3>Resultado propiedad nodeName</h3>
+    <div id="resultado">Resultado</div>
+    <h3>Resultado propiedad textContent</h3>
+    <div id="resultadoTC">Resultado</div>
+    <h3>Resultado propiedad innerHTML</h3>
+    <div id="resultadoIH">Resultado</div>
+    <h3>Resultado propiedad outerHTML</h3>
+    <div id="resultadoOH">Resultado</div>
+  </body>
+  <script>
+    // Traer los elementos del DOM que vamos a utilizar
+    let mensaje = document.getElementById("saludar");
+    mensaje.nodeName = "hola"; // no permite modificar su contenido
+    let resultado = document.getElementById("resultado");
+    //ejemplo de la propiedar nodeName, que trae el nombre del nodo en donde esta ubicado el elemento que se esta trabajando
+    resultado.innerHTML = mensaje.nodeName;
+
+    // ejemplo de la propiedad textContent. Permite traer y modificar el contenido del elemento o nodo
+
+    let textoOriginal = document.getElementById("textoOriginal");
+
+    let resultadoTC = document.getElementById("resultadoTC");
+    resultadoTC.innerHTML = textoOriginal.textContent;
+    //textoOriginal.textContent = `<strong>Mensaje original<br></strong>`;
+
+    // ejemplo de la propiedad innerHtml
+    let resultadoIH = document.getElementById("resultadoIH");
+    resultadoIH.textContent = textoOriginal.innerHTML;
+    console.log(textoOriginal.innerHTML);
+
+    // ejemplo de la propiedad outerHtml
+    let resultadoOH = document.getElementById("resultadoOH");
+    resultadoOH.textContent = textoOriginal.outerHTML;
+    console.log(textoOriginal.outerHTML);
+  </script>
+</html>

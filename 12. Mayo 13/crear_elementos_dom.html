@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crear Elementos DOM - Interactivo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #00796b;
+    }
+
+    section {
+      background: #fff;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 6px 12px;
+      background-color: #00796b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    .output {
+      border: 1px dashed #999;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Crear Elementos con DOM - Interactivo</h1>
+
+  <!-- createElement -->
+  <section>
+    <h2>1. document.createElement(tag)</h2>
+    <p>Crea un nuevo elemento HTML especificando la etiqueta.</p>
+    <button onclick="crearElemento()">Crear elemento</button>
+    <div class="output" id="output-createElement"></div>
+  </section>
+
+  <!-- createComment -->
+  <section>
+    <h2>2. document.createComment(text)</h2>
+    <p>Crea un nodo de comentario (visible en el código fuente).</p>
+    <button onclick="crearComentario()">Crear comentario</button>
+    <div class="output" id="output-createComment"></div>
+  </section>
+
+  <!-- createTextNode -->
+  <section>
+    <h2>3. document.createTextNode(text)</h2>
+    <p>Crea un nodo de texto.</p>
+    <button onclick="crearTexto()">Crear texto</button>
+    <div class="output" id="output-createTextNode"></div>
+  </section>
+
+  <!-- cloneNode -->
+  <section>
+    <h2>4. node.cloneNode(deep)</h2>
+    <p>Clona un nodo HTML (con hijos si <code>deep</code> es true).</p>
+    <button onclick="clonarNodo()">Clonar nodo</button>
+    <div class="output" id="output-cloneNode"></div>
+  </section>
+
+  <!-- isConnected -->
+  <section>
+    <h2>5. node.isConnected</h2>
+    <p>Verifica si un nodo está conectado al DOM.</p>
+    <button onclick="verificarConexion()">Verificar conexión</button>
+    <div class="output" id="output-isConnected"></div>
+  </section>
+
+  <script>
+    function crearElemento() {
+      const div = document.createElement('div');
+      div.textContent = 'Elemento creado con createElement';
+      div.style.padding = '5px';
+      div.style.border = '1px solid #00796b';
+      document.getElementById('output-createElement').appendChild(div);
+    }
+
+    function crearComentario() {
+      const comment = document.createComment('Este es un comentario del DOM');
+      document.body.appendChild(comment); // Solo visible en el código fuente
+      const msg = document.createElement('div');
+      msg.textContent = 'Comentario creado (revísalo en el código fuente HTML)';
+      msg.style.fontStyle = 'italic';
+      document.getElementById('output-createComment').appendChild(msg);
+    }
+
+    function crearTexto() {
+      const textNode = document.createTextNode('Este es un nodo de texto.');
+      const wrapper = document.createElement('div');
+      wrapper.appendChild(textNode);
+      document.getElementById('output-createTextNode').appendChild(wrapper);
+    }
+
+    function clonarNodo() {
+      const original = document.createElement('p');
+      original.innerHTML = '<strong>Original:</strong> Este es el nodo original';
+      const clone = original.cloneNode(true);
+      clone.innerHTML = '<strong>Clon:</strong> Esto es una copia del nodo original';
+      const contenedor = document.getElementById('output-cloneNode');
+      contenedor.appendChild(original);
+      contenedor.appendChild(clone);
+    }
+
+    function verificarConexion() {
+      const span = document.createElement('span');
+      span.textContent = '¿Estoy conectado al DOM? ';
+      const estado = document.createElement('strong');
+      estado.textContent = span.isConnected ? 'Sí' : 'No';
+      span.appendChild(estado);
+      document.getElementById('output-isConnected').appendChild(span);
+    }
+  </script>
+
+</body>
+</html>
