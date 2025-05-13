@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="div">Texto de la división</div>
+  </body>
+  <script>
+    let div = document.getElementById("div");
+    let antesInicio = document.createElement("div");
+    antesInicio.textContent = "texto antes del inicio";
+    antesInicio.style = "color:blue";
+    let despuesInicio = document.createElement("div");
+    despuesInicio.textContent = "texto despues del inicio";
+    despuesInicio.style = "color:red";
+    let antesFinal = document.createElement("div");
+    antesFinal.textContent = "texto antes del final";
+    antesFinal.style = "color:green";
+    let DespuesFinal = document.createElement("div");
+    DespuesFinal.textContent = "texto despues del final";
+    DespuesFinal.style = "color:yellow";
+    div.insertAdjacentElement("beforebegin",antesInicio)
+    div.insertAdjacentElement("afterbegin",despuesInicio)
+    div.insertAdjacentElement("beforeend",antesFinal)
+    div.insertAdjacentElement("afterend",DespuesFinal)
+    /*div.appendChild(antesInicio);
+    div.appendChild(despuesInicio);
+    div.appendChild(antesFinal);
+    div.appendChild(DespuesFinal);*/
+
+  </script>
+</html>
