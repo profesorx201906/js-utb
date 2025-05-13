@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="texto">Hola <strong>Mundo</strong><br><a href=""></a></p>
+    <div id="resultado"></div>
+  </body>
+  <script>
+    let parrafo = document.getElementById("texto");
+    let resultado = document.getElementById("resultado");
+
+    if (parrafo.textContent == "Hola Mundo") {
+      resultado.innerHTML = `<strong> Palabra correcta</strong>`;
+    } else {
+      resultado.innerHTML = `<strong> Palabra incorrecta</strong>`;
+    }
+  </script>
+</html>
