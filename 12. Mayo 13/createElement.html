@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="resultado">Resultado</div>
+  </body>
+  <script>
+    let resultado = document.getElementById("resultado");
+    let div = document.createElement("div");
+    let span = document.createElement("span");
+    let br = document.createElement("br")
+    let img = document.createElement("img");
+    //resultado.textContent = img.isConnected;
+    div.style.backgroundColor = "red";
+    div.textContent = "contenido del div";
+    img.src = "js.png";
+    let comentario = document.createComment("Esto es un comentario");
+    let text = document.createTextNode("Hola");
+    //clonar un nodo
+    let div2 = div.cloneNode();
+    div.id = "div1";
+    div.className = "div";
+    div.style = "color:blue";
+    span.textContent="texto dentro del span"
+    //resultado.textContent=div.getAttributeNames();//este metodo trae la lista de propiedades del nodo
+    resultado.appendChild(br);
+    resultado.appendChild(img);
+    resultado.appendChild(div);
+    resultado.appendChild(span);
+
+   
+    
+  </script>
+</html>
