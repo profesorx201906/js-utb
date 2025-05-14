@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Liquidación de Matrícula</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, select, button { padding: 8px; margin: 5px; }
+    table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 8px;
+      text-align: center;
+    }
+    th { background-color: #f2f2f2; }
+    h2, h3 { color: #333; }
+  </style>
+</head>
+<body>
+  <h2>Liquidación de Matrícula</h2>
+
+  <label>Código:</label>
+  <input type="text" id="codigo"><br>
+
+  <label>Nombre:</label>
+  <input type="text" id="nombre"><br>
+
+  <label>Programa:</label>
+  <select id="programa">
+    <option value="1">Técnico en Sistemas</option>
+    <option value="2">Técnico en Desarrollo de Videojuegos</option>
+    <option value="3">Técnico en Animación Digital</option>
+  </select><br>
+
+  <label>Beca:</label>
+  <select id="beca">
+    <option value="1">Beca por rendimiento académico (50%)</option>
+    <option value="2">Beca cultural - deportes (40%)</option>
+    <option value="3">Sin beca</option>
+  </select><br>
+
+  <button onclick="agregarEstudiante()">Agregar estudiante</button>
+
+  <div id="resultado"></div>
+  <h3 id="total-matriculas"></h3>
+
+  <script>
+    
+  </script>
+</body>
+</html>
