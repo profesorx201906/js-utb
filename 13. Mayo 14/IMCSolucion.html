@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculadora IMC</title>
+    <style>
+      body {
+        font-family: Arial;
+        text-align: center;
+        margin: 20px;
+      }
+      input,
+      button {
+        margin: 5px;
+        padding: 8px;
+      }
+      #resultado {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      table {
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Calculadora de IMC</h2>
+    <input type="number" id="peso" placeholder="Peso (kg)" step="0.1" />
+    <input type="number" id="estatura" placeholder="Estatura (m)" step="0.01" />
+    <br />
+    <button onclick="calcularIMC()">Calcular</button>
+    <div id="resultado">
+      <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Peso</th>
+            <th>Estatura</th>
+            <th>IMC</th>
+          </tr>
+        </thead>
+        <tbody id="tablaResultado"></tbody>
+      </table>
+      <div id="imc" style="margin-top: 10px"></div>
+    </div>
+
+    <script>
+      const calcularIMC = () => {
+        const peso = parseFloat(document.getElementById("peso").value);
+        const estatura = parseFloat(document.getElementById("estatura").value);
+        const tablaResultado = document.getElementById("tablaResultado");
+        const imcResultado = document.getElementById("imc");
+
+        if (!peso || !estatura) {
+          imcResultado.textContent = "Complete todos los campos";
+          return;
+        }
+
+        const imc = (peso / estatura ** 2).toFixed(2);
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+        <td>${peso}</td>
+        <td>${estatura}</td>
+        <td>${imc}</td>
+      `;
+        tablaResultado.appendChild(tr);
+
+        imcResultado.textContent = `Su IMC es: ${imc}`;
+
+        document.getElementById("peso").value = "";
+        document.getElementById("estatura").value = "";
+      };
+    </script>
+  </body>
+</html>

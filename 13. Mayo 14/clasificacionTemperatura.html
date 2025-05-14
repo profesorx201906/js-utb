@@ -1,50 +1,105 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Clasificador de Temperaturas</title>
-    <style>
-      body {
-        font-family: Arial;
-        text-align: center;
-        margin: 20px;
-      }
-      input,
-      button {
-        margin: 5px;
-        padding: 8px;
-      }
-      #lista-temperaturas p {
-        margin: 3px 0;
-      }
-      table {
-        margin: 20px auto;
-        border-collapse: collapse;
-        width: 60%;
-      }
-      th,
-      td {
-        border: 1px solid #333;
-        padding: 8px;
-      }
-      th {
-        background-color: #f0f0f0;
-      }
-    </style>
-  </head>
-  <body>
-    <h2>Clasificador de Temperaturas</h2>
+<head>
+  <meta charset="UTF-8">
+  <title>Clasificador de Temperaturas</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin: 20px; }
+    input, button { margin: 5px; padding: 8px; }
+    #lista-temperaturas p { margin: 3px 0; }
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 60%;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 8px;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <h2>Clasificador de Temperaturas</h2>
+  
+  <input type="number" id="temp" placeholder="Ingrese temperatura">
+  <br>
+  <button onclick="agregarTemp()">Agregar</button>
+  <button onclick="mostrarResultado()">Mostrar Resultado</button>
 
-    <input type="number" id="temp" placeholder="Ingrese temperatura" />
-    <br />
-    <button onclick="agregarTemp()">Agregar</button>
-    <button onclick="mostrarResultado()">Mostrar Resultado</button>
+  <h3>Temperaturas ingresadas:</h3>
+  <div id="lista-temperaturas"></div>
 
-    <h3>Temperaturas ingresadas:</h3>
-    <div id="lista-temperaturas"></div>
+  <div id="resultado"></div>
 
-    <div id="resultado"></div>
+  <script>
+    const temperaturas = [];
 
-    <script></script>
-  </body>
+    function agregarTemp() {
+      const input = document.getElementById("temp");
+      const valor = parseFloat(input.value);
+
+      if (valor === 0) {
+        alert("Fin del ingreso de temperaturas (0 no se registra)");
+        input.value = "";
+        return;
+      }
+
+      if (valor < 0 || isNaN(valor)) {
+        alert("Temperatura inválida. Debe ser mayor a 0.");
+      } else {
+        temperaturas.push(valor);
+
+        const nuevaTemp = document.createElement("p");
+        nuevaTemp.textContent = `${valor}°`;
+        document.getElementById("lista-temperaturas").appendChild(nuevaTemp);
+      }
+
+      input.value = "";
+      input.focus();
+    }
+
+    function mostrarResultado() {
+      let menoresIgual20 = 0;
+      let entre21y30 = 0;
+      let mayores30 = 0;
+
+      temperaturas.forEach(temp => {
+        if (temp <= 20) menoresIgual20++;
+        else if (temp <= 30) entre21y30++;
+        else mayores30++;
+      });
+
+      const resultadoDiv = document.getElementById("resultado");
+      resultadoDiv.innerHTML = ""; // Limpiar resultados anteriores
+
+      // Crear tabla
+      const tabla = document.createElement("table");
+
+      const encabezado = document.createElement("tr");
+      const th1 = document.createElement("th");
+      th1.textContent = "Rango de Temperatura";
+      const th2 = document.createElement("th");
+      th2.textContent = "Cantidad";
+      encabezado.appendChild(th1);
+      encabezado.appendChild(th2);
+      tabla.appendChild(encabezado);
+
+      const fila1 = document.createElement("tr");
+      fila1.innerHTML = `<td>≤ 20°</td><td>${menoresIgual20}</td>`;
+      const fila2 = document.createElement("tr");
+      fila2.innerHTML = `<td>> 20° y ≤ 30°</td><td>${entre21y30}</td>`;
+      const fila3 = document.createElement("tr");
+      fila3.innerHTML = `<td>> 30°</td><td>${mayores30}</td>`;
+
+      tabla.appendChild(fila1);
+      tabla.appendChild(fila2);
+      tabla.appendChild(fila3);
+
+      resultadoDiv.appendChild(tabla);
+    }
+  </script>
+</body>
 </html>

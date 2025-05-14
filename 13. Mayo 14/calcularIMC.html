@@ -1,24 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Calculadora IMC</title>
-  <style>
-    body { font-family: Arial; text-align: center; margin: 20px; }
-    input, button { margin: 5px; padding: 8px; }
-    #resultado { margin-top: 10px; font-weight: bold; }
-  </style>
-</head>
-<body>
-  <h2>Calculadora de IMC</h2>
-  <input type="number" id="peso" placeholder="Peso (kg)" step="0.1">
-  <input type="number" id="estatura" placeholder="Estatura (m)" step="0.01">
-  <br>
-  <button >Calcular</button>
-  <div id="resultado"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculadora IMC</title>
+    <style>
+      body {
+        font-family: Arial;
+        text-align: center;
+        margin: 20px;
+      }
+      input,
+      button {
+        margin: 5px;
+        padding: 8px;
+      }
+      #resultado {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      table {
+        margin-top: 20px;
+        border-collapse: collapse;
+        width: 50%;
+        margin: auto;
+      }
 
-  <script>
-    
-  </script>
-</body>
+      th,
+      td {
+        border: 1px solid #aaa;
+        padding: 8px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #e0e0e0;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Calculadora de IMC</h2>
+    <input type="number" id="peso" placeholder="Peso (kg)" step="0.1" />
+    <input type="number" id="estatura" placeholder="Estatura (m)" step="0.01" />
+    <br />
+    <button onclick="calcularIMC()">Calcular</button>
+    <div id="resultado"></div>
+
+    <script>
+      let i = 0;
+      function crearTabla() {
+        const tabla = document.createElement("table");
+        const thead = document.createElement("thead");
+        const fila = document.createElement("tr");
+        const thPeso = document.createElement("th");
+        thPeso.innerHTML = "Peso";
+        const thEstatura = document.createElement("th");
+        thEstatura.innerHTML = "Estatura";
+        const thIMC = document.createElement("th");
+        thIMC.innerHTML = "IMC";
+        const tbody = document.createElement("tbody");
+        tabla.id = "tabla";
+        tbody.id = "cuerpo";
+        fila.appendChild(thPeso);
+        fila.appendChild(thEstatura);
+        fila.appendChild(thIMC);
+        thead.appendChild(fila);
+        tabla.appendChild(thead);
+        tabla.appendChild(tbody);
+        document.body.appendChild(tabla);
+        const resultado = document.getElementById("resultado");
+        i++;
+      }
+      function calcularIMC() {
+        const resultado = document.getElementById("resultado");
+        const peso = parseFloat(document.getElementById("peso").value);
+        const estatura = parseFloat(document.getElementById("estatura").value);
+        if (!peso || !estatura) {
+          resultado.textContent = "Complete todos los campos";
+          return;
+        }
+        if (i === 0) {
+          crearTabla();
+        }
+
+        const cuerpo = document.getElementById("cuerpo");
+        const fila = document.createElement("tr");
+        const celdaPeso = document.createElement("th");
+        celdaPeso.innerHTML = peso;
+        const celdaEstatura = document.createElement("th");
+        celdaEstatura.innerHTML = estatura;
+        const celdaIMC = document.createElement("th");
+        const imc = (peso / estatura ** 2).toFixed(2);
+        celdaIMC.innerHTML = imc;
+        fila.appendChild(celdaPeso);
+        fila.appendChild(celdaEstatura);
+        fila.appendChild(celdaIMC);
+        cuerpo.appendChild(fila);
+
+        resultado.innerHTML = imc;
+      }
+    </script>
+  </body>
 </html>

@@ -49,7 +49,92 @@
   <h3 id="total-matriculas"></h3>
 
   <script>
-    
+    const estudiantes = [];
+    const valoresPrograma = {
+      1: 800000,
+      2: 1000000,
+      3: 1200000
+    };
+
+    function obtenerNombrePrograma(id) {
+      return {
+        1: "Técnico en Sistemas",
+        2: "Técnico en Desarrollo de Videojuegos",
+        3: "Técnico en Animación Digital"
+      }[id];
+    }
+
+    function obtenerDescuento(id) {
+      return {
+        1: 0.50,
+        2: 0.40,
+        3: 0.00
+      }[id];
+    }
+
+    function agregarEstudiante() {
+      const codigo = document.getElementById("codigo").value;
+      const nombre = document.getElementById("nombre").value;
+      const programa = parseInt(document.getElementById("programa").value);
+      const beca = parseInt(document.getElementById("beca").value);
+
+      if (!codigo || !nombre) {
+        alert("Por favor complete todos los campos.");
+        return;
+      }
+
+      const valorBase = valoresPrograma[programa];
+      const descuento = obtenerDescuento(beca);
+      const valorNeto = valorBase * (1 - descuento);
+
+      estudiantes.push({ codigo, nombre, programa, beca, valorNeto });
+      mostrarTabla();
+    }
+
+    function mostrarTabla() {
+      const div = document.getElementById("resultado");
+      div.innerHTML = "";
+
+      const tabla = document.createElement("table");
+
+      const encabezado = document.createElement("tr");
+      ["Código", "Nombre", "Programa", "Valor a Pagar"].forEach(texto => {
+        const th = document.createElement("th");
+        th.textContent = texto;
+        encabezado.appendChild(th);
+      });
+      tabla.appendChild(encabezado);
+
+      let total = 0;
+
+      estudiantes.forEach(est => {
+        const fila = document.createElement("tr");
+
+        const tdCodigo = document.createElement("td");
+        tdCodigo.textContent = est.codigo;
+        fila.appendChild(tdCodigo);
+
+        const tdNombre = document.createElement("td");
+        tdNombre.textContent = est.nombre;
+        fila.appendChild(tdNombre);
+
+        const tdPrograma = document.createElement("td");
+        tdPrograma.textContent = obtenerNombrePrograma(est.programa);
+        fila.appendChild(tdPrograma);
+
+        const tdValor = document.createElement("td");
+        tdValor.textContent = `$${est.valorNeto.toLocaleString()}`;
+        fila.appendChild(tdValor);
+
+        total += est.valorNeto;
+
+        tabla.appendChild(fila);
+      });
+
+      div.appendChild(tabla);
+
+      document.getElementById("total-matriculas").textContent = `Total matrículas: $${total.toLocaleString()}`;
+    }
   </script>
 </body>
 </html>

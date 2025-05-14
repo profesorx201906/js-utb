@@ -1,27 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Tipo de Triángulo</title>
-  <style>
-    body { font-family: Arial; text-align: center; margin: 20px; }
-    input, button { margin: 5px; padding: 8px; }
-    #resultado { margin-top: 10px; font-weight: bold; }
-  </style>
-</head>
-<body>
-  <h2>Identificador de Triángulo</h2>
-  <input type="number" id="lado1" placeholder="Lado 1">
-  <input type="number" id="lado2" placeholder="Lado 2">
-  <input type="number" id="lado3" placeholder="Lado 3">
-  <br>
-  <button onclick="determinarTriangulo()">Calcular</button>
-  <div id="resultado"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tipo de Triángulo</title>
+    <style>
+      body {
+        font-family: Arial;
+        text-align: center;
+        margin: 20px;
+      }
+      input,
+      button {
+        margin: 5px;
+        padding: 8px;
+      }
+      #resultado {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      .image {
+        height: 400px;
+        max-width: 400px;
+        background-size: cover;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Identificador de Triángulo</h2>
+    <input type="number" id="lado1" placeholder="Lado 1" min="1" />
+    <input type="number" id="lado2" placeholder="Lado 2" min="1" />
+    <input type="number" id="lado3" placeholder="Lado 3" min="1" />
+    <br />
+    <button onclick="calcular()">Calcular</button>
+    <div id="resultado"></div>
 
-  <script>
-    function determinarTriangulo() {
+    <script>
+      const calcular = () => {
+        const lado1 = document.getElementById("lado1").value;
+        const lado2 = document.getElementById("lado2").value;
+        const lado3 = document.getElementById("lado3").value;
 
-    }
-  </script>
-</body>
+        let image = document.createElement("img");
+        let texto = document.createElement("p");
+        image.className = "image";
+        let resultado = document.getElementById("resultado");
+        resultado.innerHTML = "";
+        if (!lado1 || !lado2 || !lado3) {
+          resultado.textContent = "Complete todos los campos";
+          return;
+        }
+        //valido que los datos ingresados sean mayores que 1
+        if (lado1 < 1 || lado2 < 1 || lado3 < 1) {
+          resultado.textContent = "existen valores fuera del rango [1--10]";
+          return;
+        }
+
+        if (lado1 === lado2 && lado1 === lado3) {
+          texto.textContent = "El triangulo es equilátero";
+          image.src = "./assets/equilatero.jpeg";
+        } else if (lado1 === lado2 || lado1 === lado3 || lado2 === lado3) {
+          texto.textContent = "El triangulo es isósceles";
+          image.src = "./assets/isosceles.jpeg";
+        } else {
+          texto.textContent = "El triangulo es escaleno";
+          image.src = "./assets/escaleno.jpeg";
+        }
+        
+        /*un forma diferente de hacerlo
+        let tipo = "";
+        if (lado1 === lado2 && lado1 === lado3) {
+          tipo = "equilatero.jpeg";
+        } else if (lado1 === lado2 || lado1 === lado3 || lado2 === lado3) {
+          tipo = "isosceles.j peg";
+        } else {
+          tipo = "escaleno.jpeg";
+        }
+        texto.textContent = `El triangulo es ${tipo.split(".")[0]}`;        
+        image.src = `assets/${tipo}`;*/
+        resultado.appendChild(image);
+        resultado.appendChild(texto);
+      };
+    </script>
+  </body>
 </html>
