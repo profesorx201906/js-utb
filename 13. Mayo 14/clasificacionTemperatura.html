@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Clasificador de Temperaturas</title>
+    <style>
+      body {
+        font-family: Arial;
+        text-align: center;
+        margin: 20px;
+      }
+      input,
+      button {
+        margin: 5px;
+        padding: 8px;
+      }
+      #lista-temperaturas p {
+        margin: 3px 0;
+      }
+      table {
+        margin: 20px auto;
+        border-collapse: collapse;
+        width: 60%;
+      }
+      th,
+      td {
+        border: 1px solid #333;
+        padding: 8px;
+      }
+      th {
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Clasificador de Temperaturas</h2>
+
+    <input type="number" id="temp" placeholder="Ingrese temperatura" />
+    <br />
+    <button onclick="agregarTemp()">Agregar</button>
+    <button onclick="mostrarResultado()">Mostrar Resultado</button>
+
+    <h3>Temperaturas ingresadas:</h3>
+    <div id="lista-temperaturas"></div>
+
+    <div id="resultado"></div>
+
+    <script></script>
+  </body>
+</html>
