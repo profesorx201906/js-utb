@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora IMC</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin: 20px; }
+    input, button { margin: 5px; padding: 8px; }
+    table { margin: 20px auto; border-collapse: collapse; width: 60%; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+    #imc { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Calculadora de IMC</h2>
+  <input type="number" id="peso" placeholder="Peso (kg)" step="0.1">
+  <input type="number" id="estatura" placeholder="Estatura (m)" step="0.01">
+  <br>
+ 
+  <button onclick="calcularIMC()">Calcular</button>
+ 
+  <div id="imc"></div>
+ 
+  <table>
+    <thead>
+      <tr>
+        <th>Peso (kg)</th>
+        <th>Estatura (m)</th>
+        <th>IMC</th>
+        <th>Categoría</th>
+      </tr>
+    </thead>
+    <tbody id="tablaResultado">
+    </tbody>
+  </table>
+ 
+  <script>
+    const datos = [];
+ 
+    const calcularIMC = () => {
+      const peso = parseFloat(document.getElementById('peso').value);
+      const estatura = parseFloat(document.getElementById('estatura').value);
+      const tablaResultado = document.getElementById('tablaResultado');
+      const imcResultado = document.getElementById('imc');
+ 
+      if (isNaN(peso) || isNaN(estatura) || peso <= 0 || estatura <= 0) {
+        imcResultado.textContent = 'Por favor, ingrese valores válidos.';
+        return;
+      }
+ 
+      const imc = (peso / (estatura * estatura)).toFixed(2);
+      let categoria;
+      if (imc < 18.5) {
+        categoria = "Bajo peso";
+      } else if (imc < 24.9) {
+        categoria = "Peso normal";
+      } else if (imc < 29.9) {
+        categoria = "Sobrepeso";
+      } else {
+        categoria = "Obesidad";
+      }
+ 
+      datos.push({ peso, estatura, imc, categoria });
+ 
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${peso}</td>
+        <td>${estatura}</td>
+        <td>${imc}</td>
+        <td>${categoria}</td>
+      `;
+      tablaResultado.appendChild(tr);
+ 
+      imcResultado.textContent = `Su IMC es: ${imc} (${categoria})`;
+    };
+  </script>
+</body>
+</html>
