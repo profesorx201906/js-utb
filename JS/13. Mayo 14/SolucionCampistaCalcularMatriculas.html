@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Liquidación de Matrícula</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, select, button { padding: 8px; margin: 5px; }
+    table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 8px;
+      text-align: center;
+    }
+    th { background-color: #f2f2f2; }
+    h2, h3 { color: #333; }
+  </style>
+</head>
+<body>
+  <h2>Liquidación de Matrícula Automática</h2>
+ 
+  <label>Ingrese el número de estudiantes (1 a 100):</label>
+  <input type="number" id="cantidad" min="1" max="100"><br>
+ 
+  <button onclick="generarEstudiantes()">Generar y Calcular Matrículas</button>
+ 
+  <div id="resultado"></div>
+  <h3 id="total-matriculas"></h3>
+ 
+  <script>
+    const valoresPrograma = {
+      1: 800000,
+      2: 1000000,
+      3: 1200000
+    };
+ 
+    const nombresEjemplo = [
+      "Carlos", "Ana", "Luis", "María", "Pedro", "Lucía", "Jorge", "Sofía", "Elena", "Tomás"
+    ];
+ 
+    const ApellidosEjemplo = [
+      "Gómez", "Pérez", "López", "Martínez", "Sánchez", "Ramírez", "Torres", "Flores", "Gutiérrez", "Morales"
+    ];
+ 
+    function obtenerNombrePrograma(id) {
+      return {
+        1: "Técnico en Sistemas",
+        2: "Técnico en Desarrollo de Videojuegos",
+        3: "Técnico en Animación Digital"
+      }[id];
+    }
+ 
+    function obtenerDescuento(id) {
+      return {
+        1: 0.50,
+        2: 0.40,
+        3: 0.00
+      }[id];
+    }
+ 
+    // NUEVA FUNCIÓN: genera estudiantes aleatorios
+    function generarEstudiantes() {
+      const cantidad = parseInt(document.getElementById("cantidad").value);
+ 
+      if (isNaN(cantidad) || cantidad < 1 || cantidad > 100) {
+        alert("Por favor ingrese una cantidad válida entre 1 y 100.");
+        return;
+      }
+ 
+      const estudiantes = [];
+ 
+      for (let i = 0; i < cantidad; i++) {
+        const codigo = Math.floor(100 + Math.random() * 900); // código de 3 dígitos
+        const nombre = nombresEjemplo[Math.floor(Math.random() * nombresEjemplo.length)];
+        const apellido = ApellidosEjemplo[Math.floor(Math.random() * ApellidosEjemplo.length)];
+        const programa = Math.ceil(Math.random() * 3); // 1 a 3
+        const beca = Math.ceil(Math.random() * 3); // 1 a 3
+ 
+        const valorBase = valoresPrograma[programa];
+        const descuento = obtenerDescuento(beca);
+        const valorNeto = valorBase * (1 - descuento);
+ 
+        estudiantes.push({ codigo, nombre, apellido, programa, beca, valorNeto });
+      }
+ 
+      mostrarTabla(estudiantes);
+    }
+ 
+    // Se ajusta esta función para aceptar un arreglo de estudiantes generado aleatoriamente
+    function mostrarTabla(estudiantes) {
+      const div = document.getElementById("resultado");
+      div.innerHTML = "";
+ 
+      const tabla = document.createElement("table");
+ 
+      const encabezado = document.createElement("tr");
+      ["Código", "Nombre","Apellido", "Programa", "Valor a Pagar"].forEach(texto => {
+        const th = document.createElement("th");
+        th.textContent = texto;
+        encabezado.appendChild(th);
+      });
+      tabla.appendChild(encabezado);
+ 
+      let total = 0;
+ 
+      estudiantes.forEach(est => {
+        const fila = document.createElement("tr");
+ 
+        const tdCodigo = document.createElement("td");
+        tdCodigo.textContent = est.codigo;
+        fila.appendChild(tdCodigo);
+ 
+        const tdNombre = document.createElement("td");
+        tdNombre.textContent = est.nombre;
+        fila.appendChild(tdNombre);
+ 
+        const tdApellido = document.createElement("td");
+        tdApellido.textContent = est.apellido;  
+        fila.appendChild(tdApellido);
+ 
+        const tdPrograma = document.createElement("td");
+        tdPrograma.textContent = obtenerNombrePrograma(est.programa);
+        fila.appendChild(tdPrograma);
+ 
+        const tdValor = document.createElement("td");
+        tdValor.textContent = `$${est.valorNeto.toLocaleString()}`;
+        fila.appendChild(tdValor);
+ 
+        total += est.valorNeto;
+ 
+        tabla.appendChild(fila);
+      });
+ 
+      div.appendChild(tabla);
+ 
+      document.getElementById("total-matriculas").textContent = `Total matrículas: $${total.toLocaleString()}`;
+    }
+  </script>
+</body>
+</html>
