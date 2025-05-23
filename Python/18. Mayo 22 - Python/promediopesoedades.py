@@ -82,23 +82,33 @@ for i in range(100):
 
     # Validar la entrada de la edad
     edad = random.randint(0, 100)
-    # Validar la entrada del peso
-    peso = random.randint(10, 120)
+
     # Clasificar según la edad y acumular los datos
     if edad <= 12:
         niños += 1
+        peso=random.randint(5,20)
         pesoNiños += peso
     elif edad <= 29:
         jovenes += 1
+        peso=random.randint(25,50)
         pesoJovenes += peso
     elif edad <= 59:
         adultos += 1
+        peso=random.randint(40,100)
         pesoAdultos += peso
     else:
         ancianos += 1
+        peso=random.randint(40,70)
         pesoAncianos += peso
 
 # Calcular promedios, evitando división por cero
+'''
+hace lo mismo que la linea 112
+if niños>0:
+  promedioNiños = pesoNiños / niños
+else:
+  promedioNiños=0
+'''  
 promedioNiños = pesoNiños / niños if niños > 0 else 0
 promedioJovenes = pesoJovenes / jovenes if jovenes > 0 else 0
 promedioAdultos = pesoAdultos / adultos if adultos > 0 else 0
