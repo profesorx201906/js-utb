@@ -17,23 +17,48 @@ def menu():
     print(f"{'     1. Capturar Datos empleado'}")
     print(f"{'     2. Imprimir promedio salario'}")
     print(f"{'     3. Imprimir empleados'}")
+    print(f"{'     4. Imprimir Empleados por apellido'}")
     print(f"{'     5. salir'}")
     print("-" * 40)
 
 
+def imprimirEmpleados(empleados):
+    print("-" * 80)
+    print(
+        f"{'Identificacion':<10} {'Nombre':<10} {'Apellido':<10}{'Edad':>5}{'Salario':>10}"
+    )
+    print("-" * 80)
+    for emp in empleados:
+        print(
+            f"{emp['indentificacion']:<15}{emp['nombre']:<10}{emp['apellido']:<10}{emp['edad']:>5}{emp['salario']:>15,.2f}"
+        )
+    print("-" * 80)
+
+
 def llenarDatos(empleados):
     empleado = {}
-    empleado["indentificacion"] = input(
-        f"Digite la identificacion del empleado : "
-    )
+    empleado["indentificacion"] = input(f"Digite la identificacion del empleado : ")
     empleado["nombre"] = input(f"Digite la nombre del empleado : ")
     empleado["apellido"] = input(f"Digite la apellido del empleado : ")
     empleado["edad"] = int(input(f"Digite la edad del empleado : "))
     empleado["salario"] = float(input(f"Digite la salario del empleado : "))
     empleados.append(empleado)
 
+
 def promedio():
-  
+    if len(empleados) == 0:
+        print("No hay empleados registrados.")
+    else:
+        total_salario = sum(e["salario"] for e in empleados)
+        promedio_salario = total_salario / len(empleados)
+        print(f"\nEl promedio de salario es: ${promedio_salario:,.2f}")
+    input("\nPresione una tecla para continuar...")
+
+
+def imprimirPorApellido():
+    apellido = input("Digite el apellido a buscar :")
+
+
 while True:
     limpiar_pantalla()
     menu()
@@ -44,10 +69,12 @@ while True:
         limpiar_pantalla()
         llenarDatos(empleados)
     elif opcion == 2:
-      print()
+        promedio()
     elif opcion == 3:
-        print(empleados)
+        imprimirEmpleados(empleados)
         input("Presione tecla para continuar")
+    elif opcion == 4:
+        imprimirPorApellido()
 
 
 """import json
