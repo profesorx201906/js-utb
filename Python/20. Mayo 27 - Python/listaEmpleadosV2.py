@@ -5,7 +5,7 @@ from faker import Faker
 from faker.providers import BaseProvider
 import random
 
-fake = Faker()
+fake = Faker("es_CO")
 
 empleados = []
 Faker.seed(0)
@@ -51,7 +51,7 @@ fake.add_provider(nombreEmpleado)
 for i in range(10):
     empleado = {}
     empleado["indentificacion"] = fake.random_number(digits=10, fix_len=True)
-    nombre = fake.nombre_emp().split(" ")
+    nombre = fake.name().split(" ")
     empleado["nombre"] = nombre[0]
     empleado["apellido"] = nombre[1]
     empleado["edad"] = random.randint(18, 60)
