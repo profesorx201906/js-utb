@@ -47,3 +47,9 @@ print(dfExcel)
 print("aumentar el valor de las carnes en un 10%")
 dfExcel["Carnes"] = dfExcel["Carnes"] * 1.1
 print(dfExcel)
+
+
+# carnes aplicar descuento 10$
+print("Carnes con valor menor a 80000 descuento 10%")
+dfExcel["C<80000"] = np.where(dfExcel["Carnes"] < 80000, dfExcel["Carnes"]*1.1,dfExcel["Carnes"])
+print(dfExcel)
