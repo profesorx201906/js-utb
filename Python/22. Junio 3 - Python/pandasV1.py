@@ -37,9 +37,12 @@ print(dfExcel.iloc[5])
 print(df.head())
 
 
-#acceder por medio de nombres
+# acceder por medio de nombres
 print("por fila y columna")
-print(dfExcel.loc[4,"Verduras"])
+print(dfExcel.loc[4, "Verduras"])
+print("por fila y columna con lista (tupla)")
+print(dfExcel.loc[:2, ("Verduras", "Lácteos")])
+
 print("por columna")
 print(dfExcel["Verduras"])
 print(dfExcel.Lácteos)
