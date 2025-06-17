@@ -45,3 +45,16 @@ print(productos_pivot)
 print("Presione tecla para continuar")
 input()
 lp.limpiar_pantalla()
+
+
+print("Convertir filas en columnas")
+productos_fc=pd.DataFrame({
+    'Fecha':['2023-01','2023-02'],
+    'Samsung':[400,600],
+    'Apple':[300,500]
+})
+print('Información Original')
+print(productos_fc)
+dataframe_melt=pd.melt(productos_fc,id_vars="Fecha",value_vars=["Samsung","Apple"])
+print("Resultado de melt")
+print(dataframe_melt)
