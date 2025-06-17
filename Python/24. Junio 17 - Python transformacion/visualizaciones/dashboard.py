@@ -69,17 +69,29 @@ grafica_lineas = px.line(
 )
 # grafica_lineas.show()
 
+# aplicacion flask
 app = dash.Dash(__name__)
 
 app.layout = html.Div(
     children=[
         html.H1(children="Tableros Población"),
         html.Div(children="Tableros"),
-        html.Table(),
-        dcc.Graph(id="Ejemplo Columna", figure=grafica_barras),
-        dcc.Graph(id="Ejemplo barra", figure=grafica_barrasH),
-        dcc.Graph(id="Ejemplo Torta", figure=grafica_torta),
-        dcc.Graph(id="Ejemplo Lineas", figure=grafica_lineas),
+        html.Table(
+            children=[
+                html.Tr(
+                    children=[
+                        html.Td(dcc.Graph(id="Ejemplo Columna", figure=grafica_barras)),
+                        html.Td(dcc.Graph(id="Ejemplo barra", figure=grafica_barrasH)),
+                    ]
+                ),
+                html.Tr(
+                    children=[
+                        html.Td(dcc.Graph(id="Ejemplo Torta", figure=grafica_torta)),
+                        html.Td(dcc.Graph(id="Ejemplo Lineas", figure=grafica_lineas)),
+                    ]
+                ),
+            ]
+        ),
     ]
 )
 
