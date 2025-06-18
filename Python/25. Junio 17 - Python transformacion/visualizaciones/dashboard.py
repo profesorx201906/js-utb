@@ -69,6 +69,7 @@ grafica_lineas = px.line(
 )
 # grafica_lineas.show()
 
+
 # aplicacion flask
 app = dash.Dash(__name__)
 
