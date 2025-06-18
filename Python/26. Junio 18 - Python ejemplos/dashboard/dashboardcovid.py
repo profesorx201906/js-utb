@@ -25,15 +25,19 @@ app.layout = html.Div([
 
     html.Div([
         html.Div([
-            html.P('Selecciona dosis vacuna', style={'color':'black', 'margin-top': '2px'}),
-            dcc.RadioItems(id = 'dosis', 
-                            labelStyle = {'display': 'inline-block'},
-                            options = [
-                                {'label' : 'Primera Dosis', 'value' : 'primera_dosis'},
-                                {'label' : 'Dosis de refuerzo', 'value' : 'dosis_refuerzo_cantidad'}
-                            ], value = 'primera_dosis',
-                            style = {'text-aling':'center', 'color':'black'}),
-        ],  style = {'margin-bottom': '20px'})
+            html.P('Selecciona dosis vacuna', style={'color': 'black', 'margin-top': '2px'}),
+            dcc.Dropdown(
+                id='dosis',
+                options=[
+                    {'label': 'Primera Dosis', 'value': 'primera_dosis'},
+                    {'label': 'Segunda Dosis', 'value': 'segunda_dosis'},
+                    {'label': 'Dosis de refuerzo', 'value': 'dosis_refuerzo_cantidad'}
+                ],
+                value='primera_dosis',
+                placeholder="Seleccione una opción",
+                style={'color': 'black'}
+            ),
+        ], style={'margin-bottom': '20px'})
     ]),
 
     html.Div([
@@ -60,8 +64,13 @@ def update_graph_bar(value):
             data_frame = df,
             x = 'jurisdiccion_nombre',
             y = 'primera_dosis_cantidad')
-    else:
+    elif value == 'segunda_dosis':
         fig = px.bar(
+            data_frame= df,
+            x = 'jurisdiccion_nombre',
+            y = 'segunda_dosis_cantidad')
+    else:
+            fig = px.bar(
             data_frame= df,
             x = 'jurisdiccion_nombre',
             y = 'dosis_refuerzo_cantidad')
@@ -79,8 +88,14 @@ def update_graph_pie(value):
             data_frame = df,
             names = 'jurisdiccion_nombre',
             values = 'primera_dosis_cantidad')
-    else:
+    elif value == 'segunda_dosis':
         fig2 = px.pie(
+            data_frame = df,
+            names = 'jurisdiccion_nombre',
+            values = 'segunda_dosis_cantidad'
+        )
+    else:
+           fig2 = px.pie(
             data_frame = df,
             names = 'jurisdiccion_nombre',
             values = 'dosis_refuerzo_cantidad'
