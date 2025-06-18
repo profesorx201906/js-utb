@@ -4,14 +4,18 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly.express as px
 import pandas as pd
+import os
 #Leer archivo excel e impirmir las primeras 5 filas
-df_fuente = pd.read_excel('CasoEstudioRestauranteDatos.xlsx', sheet_name='Datos')
+ruta = os.path.join(os.path.dirname(__file__))
+df_fuente = pd.read_excel(f'{ruta}/CasoEstudioRestauranteDatos.xlsx', sheet_name='Datos')
 
 # Paso 2: Limpieza de datos (Valores Nulos)
 df=df_fuente.dropna()
 
 # Paso 2: Limpieza de datos (Valores Duplicados)
 df=df.drop_duplicates()
+
+
 
 # Paso 3: Transformaciones - Visualizaciones
 
