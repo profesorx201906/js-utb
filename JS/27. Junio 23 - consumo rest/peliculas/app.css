@@ -1,0 +1,42 @@
+body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
+        h1 { color: #333; }
+        #peliculas-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .pelicula-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px;
+            text-align: center;
+        }
+        .pelicula-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .pelicula-card h2 {
+            font-size: 1.2em;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+        .pelicula-card p {
+            font-size: 0.9em;
+            color: #777;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }

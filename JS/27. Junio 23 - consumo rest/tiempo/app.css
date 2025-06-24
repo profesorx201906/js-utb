@@ -1,0 +1,71 @@
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f8ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: calc(100% - 22px);
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #resultadoClima {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e6f7ff;
+            border-left: 5px solid #007bff;
+            text-align: left;
+            border-radius: 8px;
+            font-size: 1.1em;
+            color: #333;
+            min-height: 80px; /* Para mantener espacio */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        #resultadoClima p {
+            margin: 5px 0;
+        }
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
