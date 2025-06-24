@@ -30,7 +30,8 @@ async function obtenerTasasDeCambio() {
         }
 
         const data = await respuesta.json();
-
+        console.log(API_URL);
+        
         if (data.result === 'error') {
             throw new Error(`Error de la API: ${data.error_type}. Por favor, verifica tu clave o los límites de uso.`);
         }
