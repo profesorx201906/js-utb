@@ -12,7 +12,8 @@ async function obtenerClimaPorUbicacion() {
         const position = await new Promise((resolve, reject) => {
             navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 });
         });
-
+        console.log(position);
+        
         const latitud = position.coords.latitude;
         const longitud = position.coords.longitude;
 

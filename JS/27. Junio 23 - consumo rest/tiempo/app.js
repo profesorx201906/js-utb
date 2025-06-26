@@ -13,6 +13,7 @@ async function obtenerClima() {
 
     try {
         const geoUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(ciudad)}&format=json&limit=1`;
+        
         const geoResponse = await fetch(geoUrl);
         if (!geoResponse.ok) {
             throw new Error(`Error al buscar la ciudad: ${geoResponse.status}`);
@@ -20,7 +21,7 @@ async function obtenerClima() {
         
         
         const geoData = await geoResponse.json();
-        console.log(geoUrl);
+        
         if (geoData.length === 0) {
             resultadoClimaDiv.innerHTML = `<p class="error">No se encontró la ciudad "${ciudad}".</p>`;
             return;
@@ -33,8 +34,9 @@ async function obtenerClima() {
         if (!climaResponse.ok) {
             throw new Error(`Error al obtener datos del clima: ${climaResponse.status}`);
         }
-
+       
         const climaData = await climaResponse.json();
+         console.log(climaData);
         if (!climaData.current_weather) {
             resultadoClimaDiv.innerHTML = `<p class="error">No se pudo obtener el clima actual para "${ciudad}".</p>`;
             return;
@@ -42,6 +44,7 @@ async function obtenerClima() {
         const temperatura = climaData.current_weather.temperature;
         const velocidadViento = climaData.current_weather.windspeed;
         const weatherCode = climaData.current_weather.weathercode;
+        const actualTime = climaData.current_weather.time
         function obtenerDescripcionClima(code) {
             if (code >= 0 && code <= 3) return 'Soleado / Parcialmente Nublado';
             if (code >= 45 && code <= 48) return 'Niebla';
@@ -58,6 +61,7 @@ async function obtenerClima() {
             <p><strong>Temperatura:</strong> ${temperatura}°C</p>
             <p><strong>Condición:</strong> ${descripcionClima}</p>
             <p><strong>Viento:</strong> ${velocidadViento} km/h</p>
+            <p><strong>Hora Medida:</strong> ${actualTime} </p>
         `;
 
     } catch (error) {

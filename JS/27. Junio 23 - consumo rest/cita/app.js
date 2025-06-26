@@ -59,7 +59,8 @@ async function traducirCitaAutomatica() {
         const traduccionUrlCompleta = `${TRADUCCION_API_URL}?langpair=en|es&q=${encodeURIComponent(textoATraducir)}`;
         
         const response = await fetch(traduccionUrlCompleta);
-
+        console.log(traduccionUrlCompleta);
+        
         if (!response.ok) {
             throw new Error(`Error al traducir: ${response.status} - ${response.statusText}`);
         }

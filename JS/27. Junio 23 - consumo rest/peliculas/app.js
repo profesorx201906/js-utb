@@ -3,7 +3,7 @@ const cargarPeliculasBtn = document.getElementById('cargarPeliculasBtn');
 const peliculasContainer = document.getElementById('peliculas-container');
 const mensajeCarga = document.getElementById('mensaje-carga');
 //url del servicio rest 
-const API_URL = 'https://jsonplaceholder.typicode.com/posts';
+const API_URL = 'https://jsonplaceholder.typicode.com/comments';
 
 //peticiones asincronas
 async function obtenerPeliculas() {
@@ -43,7 +43,7 @@ function mostrarPeliculas(peliculas) {
     peliculasAMostrar.forEach(pelicula => {
         const peliculaCard = document.createElement('div');
         peliculaCard.classList.add('pelicula-card');
-        const titulo = pelicula.title;
+        const titulo = pelicula.email;
         const cuerpo = pelicula.body.substring(0, 100) + '...';
         const imagenUrl = `https://picsum.photos/200/300?random=${pelicula.id}`;
         console.log(imagenUrl);
